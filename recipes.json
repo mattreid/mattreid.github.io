@@ -165,8 +165,8 @@
         "description": "A spicy, umami and slightly sweet sauce coats chewy tofu pieces, cooked to golden perfection. This dish is super flavourful and made with only 7 ingredients, perfect as a quick weeknight meal or a lazy weekend dinner.",
         "image": "https://images.unsplash.com/photo-1596797038534-2a0472b6a2a5?w=400",
         "prepTime": "15 min",
-        "cookTime": "20 min",
-        "servings": 2,
+        "cookTime": "16 min",
+        "servings": 3,
         "complexity": 2,
         "source": "https://www.pickuplimes.com/recipe/spicy-gochujang-tomato-tofu-1955",
         "ingredients": [
@@ -188,6 +188,104 @@
             "When the tofu is golden, transfer it to a plate. Add the tomatoes to the now-empty pan, and cook for 3 minutes.",
             "Add the sauce and cook for an additional 3 minutes.",
             "Stir in the tofu, then serve alongside the warm rice. Garnish as desired, and enjoy!"
+        ]
+    },
+    {
+        "id": "vegan-apple-crisp",
+        "title": "The Best Vegan Apple Crisp",
+        "description": "I know what you're thinking. The best apple crisp, really? Friends, I know this is a big claim, but I've had a lot of apple crisps in my life and know this is a one.",
+        "image": "https://images.unsplash.com/photo-15687093429674-8c5f51e00e2?w=400",
+        "prepTime": "20 min",
+        "cookTime": "60 min",
+        "servings": 12,
+        "complexity": 3,
+        "source": "https://minimalistbaker.com/the-best-vegan-apple-crisp/",
+        "ingredients": [
+            "8 medium-large apples (half tart, half sweet)",
+            "1 lemon, juiced",
+            "2/3 cup coconut sugar",
+            "1.5 tsp ground cinnamon",
+            "3 Tbsp arrowroot starch or cornstarch",
+            "3/4 cup fresh apple juice",
+            "3/4 tsp fresh grated ginger",
+            "1 pinch nutmeg",
+            "1 cup gluten-free rolled oats",
+            "1/2 cup almond meal",
+            "1/2 cup unbleached all-purpose flour",
+            "1/2 cup muscovado sugar",
+            "1/2 cup pecans, roughly chopped",
+            "1/4 tsp sea salt",
+            "1/2 tsp ground cinnamon",
+            "1/2 cup melted coconut oil or olive oil"
+        ],
+        "instructions": [
+            "Preheat oven to 350°F (176°C).",
+            "Peel apples, quarter, remove cores, and use a paring knife to thinly slice lengthwise.",
+            "Add to a large mixing bowl and top with remaining filling ingredients. Toss to combine.",
+            "Add to a 9×13-inch baking dish and spread evenly.",
+            "Rinse and wipe out your mixing bowl and add all topping ingredients. Stir to combine, then use fingers to break down any clumps of sugar. Pour over apples in an even layer.",
+            "Bake for 50 minutes to 1 hour (uncovered) or until filling is bubbly, apples are very fork tender, and topping is deep golden brown.",
+            "Let rest at least 30 minutes before serving. This is delicious with coconut whipped cream or vanilla bean coconut ice cream.",
+            "Best when fresh, though leftovers keep covered in refrigerator up to 3 days, or in freezer up to 1 month. Reheat in microwave or in a 350°F (176°C) oven until warmed through."
+        ]
+    },
+    {
+        "id": "crispy-seitan",
+        "title": "Crispy 5-Minute Seitan",
+        "description": "A quick and easy way to get in a healthy dose of plant-based protein, especially if you don't have a gluten sensitivity. This savory version is incredibly versatile.",
+        "image": "https://images.unsplash.com/photo-1596797038534-2a0472b6a2a5?w=400",
+        "prepTime": "5 min",
+        "cookTime": "5 min",
+        "servings": 1,
+        "complexity": 2,
+        "source": "https://www.plantwhys.com/blog/crispy-5-minute-seitan",
+        "ingredients": [
+            "1/3 cup vital wheat gluten",
+            "1 tablespoon nutritional yeast",
+            "1 tablespoon powdered peanut butter",
+            "1 teaspoon garlic powder",
+            "1/2 teaspoon onion powder",
+            "1/2 teaspoon salt",
+            "1/2 cup water"
+        ],
+        "instructions": [
+            "Preheat your waffle maker or panini press and spray with oil.",
+            "In a medium bowl, combine all dry ingredients: vital wheat gluten, nutritional yeast, PB powder, garlic powder, onion powder, and salt.",
+            "Add water and stir until a dough forms. Knead it lightly for 30 seconds to activate the gluten.",
+            "Place the dough into your preheated waffle maker and cook for 5 minutes, or until golden and firm.",
+            "Let cool slightly, then break apart into chunks."
+        ]
+    },
+    {
+        "id": "protein-baked-oatmeal",
+        "title": "Protein Baked Oatmeal",
+        "description": "Have your oatmeal and get your protein in with this protein baked oatmeal! It's easy to make, perfect for meal prep and packs over 17 grams of protein per serving.",
+        "image": "https://images.unsplash.com/photo-15687093429674-8c5f51e00e2?w=400",
+        "prepTime": "10 min",
+        "cookTime": "40 min",
+        "servings": 4,
+        "complexity": 2,
+        "source": "https://www.eatingbirdfood.com/protein-baked-oatmeal/#wprm-recipe-container-106958",
+        "ingredients": [
+            "1 cup old fashioned rolled oats",
+            "1/2 scoop vanilla protein powder",
+            "1 tablespoon peanut butter",
+            "1/2 cup unsweetened almond milk",
+            "1 egg",
+            "1 tablespoon maple syrup",
+            "1/2 tablespoon coconut oil",
+            "1/4 teaspoon vanilla extract",
+            "1/4 teaspoon salt",
+            "1/2 cup fresh blueberries"
+        ],
+        "instructions": [
+            "Preheat oven to 375°F (190°C) and lightly grease a 1.5 quart baking dish.",
+            "Add oats, protein powder, peanut butter, and salt to a medium bowl. Mix well.",
+            "In a separate small bowl, whisk together almond milk, egg, maple syrup, coconut oil, vanilla extract, and salt.",
+            "Pour wet ingredients into the dry ingredients and stir until just combined.",
+            "Transfer mixture to the prepared baking dish and spread evenly.",
+            "Bake for 35-40 minutes until the edges are golden and the center is set.",
+            "Let cool for 5 minutes before serving. Top with additional blueberries if desired."
         ]
     }
 ]
