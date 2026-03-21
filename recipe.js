@@ -268,6 +268,9 @@ class RecipeDetail {
                 pageTitleEl.textContent = recipe.title;
             }
             
+            // Initialize ingredients for scaling
+            this.updateIngredients(1); // Initialize with scale factor of 1
+            
             this.renderRecipeDetail(recipe);
         } else {
             console.log('❌ Recipe not found in loaded recipes');
