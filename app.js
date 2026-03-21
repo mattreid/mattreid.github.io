@@ -251,10 +251,10 @@ class RecipeSite {
                     <h3 class="recipe-title">${recipe.title}</h3>
                     <p class="recipe-description">${recipe.description}</p>
                     <div class="recipe-meta">
-                        <span>⏱️ ${recipe.prepTime}</span>
+                        <span>🔪 ${recipe.prepTime}</span>
                         <span>🔥 ${recipe.cookTime}</span>
-                        <span>👥 ${recipe.servings} servings</span>
-                        <span>📊 ${this.getComplexityStars(recipe.complexity || 3)}</span>
+                        <span>⏰ ${this.calculateTotalTime(recipe.prepTime, recipe.cookTime)}</span>
+                        <span>🧠 ${this.getComplexityDisplay(recipe.complexity || 3)}</span>
                     </div>
                 </div>
             `;
@@ -263,10 +263,17 @@ class RecipeSite {
         });
     }
 
-    getComplexityStars(complexity) {
-        const stars = '⭐'.repeat(complexity || 3);
-        const empty = '☆'.repeat(5 - (complexity || 3));
-        return stars + empty;
+    getComplexityDisplay(complexity) {
+        const level = complexity || 3;
+        let color;
+        if (level <= 2) {
+            color = 'green';
+        } else if (level <= 3) {
+            color = 'gray';
+        } else {
+            color = 'red';
+        }
+        return `<span style="color: ${color}">${level}</span>`;
     }
 
     filterRecipes(searchTerm) {
@@ -283,137 +290,8 @@ class RecipeSite {
         window.location.href = `recipe.html?id=${recipeId}`;
     }
 
-    closeModal() {
-        const modal = document.getElementById('recipeModal');
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        this.currentRecipe = null;
-    }
-
-    renderRecipeDetail(recipe) {
-        const detailContainer = document.getElementById('recipeDetail');
-        detailContainer.innerHTML = `
-            <div class="recipe-detail-header">
-                <img src="${recipe.image}" alt="${recipe.title}" class="recipe-detail-image">
-            </div>
-            <div class="recipe-detail-content">
-                <h1 class="recipe-detail-title">${recipe.title}</h1>
-                <p class="recipe-detail-description">${recipe.description}</p>
-                
-                <div class="recipe-timing">
-                    <div class="timing-item">
-                        <span>⏱️</span>
-                        <span>Prep: ${recipe.prepTime}</span>
-                    </div>
-                    <div class="timing-item">
-                        <span>🔥</span>
-                        <span>Cook: ${recipe.cookTime}</span>
-                    </div>
-                    <div class="timing-item">
-                        <span>📊</span>
-                        <span>Total: ${this.calculateTotalTime(recipe.prepTime, recipe.cookTime)}</span>
-                    </div>
-                </div>
-
-                <div class="serving-adjuster">
-                    <label for="servingCount">Servings:</label>
-                    <div class="serving-controls">
-                        <button class="serving-btn" onclick="recipeSite.adjustServings(-1)">−</button>
-                        <span class="serving-count" id="servingCount">${recipe.servings}</span>
-                        <button class="serving-btn" onclick="recipeSite.adjustServings(1)">+</button>
-                    </div>
-                    <span id="originalServings" style="display: none;">${this.originalServings}</span>
-                </div>
-
-                <div class="recipe-section">
-                    <h2 class="section-title">🥘 Ingredients</h2>
-                    <ul class="ingredients-list" id="ingredientsList">
-                        ${this.renderIngredients(recipe.ingredients)}
-                    </ul>
-                </div>
-
-                <div class="recipe-section">
-                    <h2 class="section-title">📝 Instructions</h2>
-                    <ol class="instructions-list">
-                        ${recipe.instructions.map(instruction => 
-                            `<li class="instruction-item">${instruction}</li>`
-                        ).join('')}
-                    </ol>
-                </div>
-
-                ${recipe.source ? `
-                    <div class="recipe-source">
-                        <h3 class="section-title">🔗 Source</h3>
-                        <a href="${recipe.source}" target="_blank" class="source-link">View Original Recipe</a>
-                    </div>
-                ` : ''}
-            </div>
-        `;
-
-        this.setupIngredientCheckboxes();
-    }
-
-    renderIngredients(ingredients) {
-        return ingredients.map(ingredient => 
-            `<li class="ingredient-item">
-                <input type="checkbox" class="ingredient-checkbox">
-                <span class="ingredient-text">${ingredient}</span>
-            </li>`
-        ).join('');
-    }
-
-    setupIngredientCheckboxes() {
-        const checkboxes = document.querySelectorAll('.ingredient-checkbox');
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', (e) => {
-                const text = e.target.nextElementSibling;
-                if (e.target.checked) {
-                    text.classList.add('checked');
-                } else {
-                    text.classList.remove('checked');
-                }
-            });
-        });
-    }
-
-    adjustServings(change) {
-        if (!this.currentRecipe) return;
-
-        const servingCountEl = document.getElementById('servingCount');
-        const originalServingsEl = document.getElementById('originalServings');
-        let currentServings = parseInt(servingCountEl.textContent);
-        const newServings = Math.max(1, currentServings + change);
-        
-        servingCountEl.textContent = newServings;
-        
-        const scaleFactor = newServings / this.originalServings;
-        this.updateIngredients(scaleFactor);
-    }
-
-    updateIngredients(scaleFactor) {
-        const ingredientsList = document.getElementById('ingredientsList');
-        const updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
-            return this.scaleIngredient(ingredient, scaleFactor);
-        });
-
-        ingredientsList.innerHTML = this.renderIngredients(updatedIngredients);
-        this.setupIngredientCheckboxes();
-    }
-
-    scaleIngredient(ingredient, scaleFactor) {
-        // Simple scaling - just multiply numbers in the ingredient string
-        // This is a basic implementation that handles common cases
-        return ingredient.replace(/(\d+\.?\d*)\s*([a-zA-Z]+)/g, (match, amount, unit) => {
-            const scaledAmount = (parseFloat(amount) * scaleFactor).toFixed(1);
-            // Remove .0 for whole numbers
-            const cleanAmount = scaledAmount.endsWith('.0') ? 
-                Math.round(parseFloat(scaledAmount)).toString() : scaledAmount;
-            return `${cleanAmount} ${unit}`;
-        });
-    }
-
     calculateTotalTime(prepTime, cookTime) {
-        // Simple time calculation - this could be enhanced
+        // Parse time strings and calculate total
         const prepMinutes = this.parseTime(prepTime);
         const cookMinutes = this.parseTime(cookTime);
         const totalMinutes = prepMinutes + cookMinutes;
@@ -441,6 +319,8 @@ class RecipeSite {
             return amount;
         }
     }
+
+
 }
 
 // Initialize the recipe site when DOM is loaded
