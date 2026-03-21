@@ -420,7 +420,22 @@ class RecipeDetail {
     updateIngredients(scaleFactor) {
         const ingredientsList = document.getElementById('ingredientsList');
         if (!ingredientsList) {
-            console.error('❌ Ingredients list element not found');
+            console.error('❌ Ingredients list element not found - retrying...');
+            // Retry after a short delay
+            setTimeout(() => {
+                const retryList = document.getElementById('ingredientsList');
+                if (retryList) {
+                    this.updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
+                        return this.scaleIngredient(ingredient, scaleFactor);
+                    });
+                    
+                    retryList.innerHTML = this.renderIngredients(this.updatedIngredients);
+                    this.setupIngredientCheckboxes();
+                    console.log('✅ Ingredients list found on retry');
+                } else {
+                    console.error('❌ Ingredients list still not found after retry');
+                }
+            }, 100);
             return;
         }
         
@@ -513,17 +528,107 @@ class RecipeDetail {
             } else {
                 console.log('✅ Test PASSED: Recipe loaded successfully');
                 console.log(`📋 Recipe: ${this.currentRecipe.title}`);
-                console.log(`🥘 Ingredients: ${this.currentRecipe.ingredients.length} items`);
-                console.log(`🍽 Original Servings: ${this.originalServings}`);
-                return true;
-            }
-        };
-        
-        // Try multiple times with increasing delays
-        setTimeout(checkRecipeLoaded, 1000);  // Check after 1 second
-        setTimeout(checkRecipeLoaded, 2500);  // Check after 2.5 seconds  
-        setTimeout(checkRecipeLoaded, 5000);  // Check after 5 seconds
     }
+    
+    this.updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
+        return this.scaleIngredient(ingredient, scaleFactor);
+    });
+    
+    ingredientsList.innerHTML = this.renderIngredients(this.updatedIngredients);
+    this.setupIngredientCheckboxes();
+}
+
+scaleIngredient(ingredient, scaleFactor) {
+    // Improved scaling that handles decimals properly
+    return ingredient.replace(/(\d*\.?\d*)\s*([a-zA-Z]+)/g, (match, amount, unit) => {
+        const originalAmount = parseFloat(amount);
+        const scaledAmount = originalAmount * scaleFactor;
+        
+        // Format the result properly
+        let formattedAmount;
+        if (scaledAmount < 1) {
+            formattedAmount = scaledAmount.toFixed(2);
+        } else if (scaledAmount < 10) {
+            formattedAmount = scaledAmount.toFixed(1);
+        } else {
+            formattedAmount = Math.round(scaledAmount).toString();
+        }
+        
+        // Remove trailing .0 for whole numbers
+        if (formattedAmount.endsWith('.0')) {
+            formattedAmount = Math.round(parseFloat(formattedAmount)).toString();
+        }
+        
+        return `${formattedAmount} ${unit}`;
+    });
+}
+
+calculateTotalTime(prepTime, cookTime) {
+    // Simple time calculation - this could be enhanced
+    const prepMinutes = this.parseTime(prepTime);
+    const cookMinutes = this.parseTime(cookTime);
+    const totalMinutes = prepMinutes + cookMinutes;
+    
+    if (totalMinutes < 60) {
+        return `${totalMinutes} min`;
+    } else {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        return minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
+    }
+}
+
+parseTime(timeString) {
+    // Parse time strings like "15 min", "1 hour", "2h 30m"
+    const match = timeString.match(/(\d+)\s*(hour|hr|h|min|minute|m)/i);
+    if (!match) return 0;
+    
+    const amount = parseInt(match[1]);
+    const unit = match[2].toLowerCase();
+    
+    if (unit.startsWith('h')) {
+        return amount * 60;
+    } else {
+        return amount;
+    }
+}
+
+// Test functionality to catch common issues
+runTests() {
+    console.log('🧪 Running Recipe Detail Tests...');
+    
+    // Test 1: Check if class properties are properly initialized
+    if (this.updatedIngredients === undefined) {
+        console.error('❌ Test FAILED: updatedIngredients is undefined');
+    } else {
+        console.log('✅ Test PASSED: updatedIngredients is properly initialized');
+    }
+    
+    // Test 2: Check if originalServings is properly set
+    if (this.originalServings === null) {
+        console.error('❌ Test FAILED: originalServings is null');
+    } else {
+        console.log('✅ Test PASSED: originalServings is properly initialized');
+    }
+    
+    // Test 3: Check if currentRecipe loads properly
+    const checkRecipeLoaded = () => {
+        if (!this.currentRecipe) {
+            console.error('❌ Test FAILED: No recipe loaded after 5 seconds');
+            return false;
+        } else {
+            console.log('✅ Test PASSED: Recipe loaded successfully');
+            console.log(`📋 Recipe: ${this.currentRecipe.title}`);
+            console.log(`🥘 Ingredients: ${this.currentRecipe.ingredients.length} items`);
+            console.log(`🍽 Original Servings: ${this.originalServings}`);
+            return true;
+        }
+    };
+    
+    // Try multiple times with increasing delays
+    setTimeout(checkRecipeLoaded, 1000);  // Check after 1 second
+    setTimeout(checkRecipeLoaded, 2500);  // Check after 2.5 seconds  
+    setTimeout(checkRecipeLoaded, 5000);  // Check after 5 seconds
 }
 
 // Initialize the recipe detail page when DOM is loaded
