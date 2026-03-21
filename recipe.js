@@ -525,38 +525,6 @@ class RecipeDetail {
         }
     }
 
-    // Test functionality to catch common issues
-    runTests() {
-        console.log('🧪 Running Recipe Detail Tests...');
-        
-        // Test 1: Check if class properties are properly initialized
-        if (this.updatedIngredients === undefined) {
-            console.error('❌ Test FAILED: updatedIngredients is undefined');
-        } else {
-            console.log('✅ Test PASSED: updatedIngredients is properly initialized');
-        }
-        
-        // Test 2: Check if originalServings is properly set
-        if (this.originalServings === null) {
-            console.error('❌ Test FAILED: originalServings is null');
-        } else {
-            console.log('✅ Test PASSED: originalServings is properly initialized');
-        }
-        
-        // Test 3: Check if currentRecipe loads properly
-        setTimeout(() => {
-            if (!this.currentRecipe) {
-                console.error('❌ Test FAILED: No recipe loaded after 5 seconds');
-                return false;
-            } else {
-                console.log('✅ Test PASSED: Recipe loaded successfully');
-                console.log(`📋 Recipe: ${this.currentRecipe.title}`);
-                console.log(`🥘 Ingredients: ${this.currentRecipe.ingredients.length} items`);
-                console.log(`🍽 Original Servings: ${this.originalServings}`);
-                return true;
-            }
-        }, 3000);
-    }
 
     calculateTotalTime(prepTime, cookTime) {
         // Simple time calculation - this could be enhanced
@@ -593,5 +561,4 @@ class RecipeDetail {
 let recipeDetail;
 document.addEventListener('DOMContentLoaded', () => {
     recipeDetail = new RecipeDetail();
-    recipeDetail.runTests();
 });
