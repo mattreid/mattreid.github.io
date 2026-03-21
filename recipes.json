@@ -290,39 +290,5 @@
             "Once cooking is done, give chickpeas a stir and serve them warm over a bed of white rice (or cauliflower rice) with a sprinkling of green onions and sesame seeds on top.",
             "Leftovers can be stored in an airtight container in the fridge for up to a week."
         ]
-    },
-    {
-        "id": "sweet-potato-curry",
-        "title": "Sweet Potato Curry",
-        "description": "A flavorful and comforting curry with roasted sweet potatoes and a blend of warming spices.",
-        "image": "https://images.unsplash.com/photo-1596797038534-2a0472b6a2a5?w=400",
-        "prepTime": "20 min",
-        "cookTime": "30 min",
-        "servings": 4,
-        "complexity": 2,
-        "source": "https://www.simplyrecipes.com/recipes/sweet_potato_curry/",
-        "ingredients": [
-            "2 large sweet potatoes, peeled and cubed",
-            "2 medium onions, chopped",
-            "3 cloves garlic, minced",
-            "1 tablespoon grated fresh ginger",
-            "1 teaspoon ground cumin",
-            "1 teaspoon curry powder",
-            "1/2 teaspoon turmeric",
-            "1/2 teaspoon cayenne pepper",
-            "1 can coconut milk",
-            "1 cup vegetable broth",
-            "Salt and pepper, to taste",
-            "Fresh cilantro, chopped (optional)"
-        ],
-        "instructions": [
-            "Preheat oven to 400°F (200°C).",
-            "Toss sweet potatoes with 1 tablespoon oil, salt, and pepper on a baking sheet. Roast for 20-25 minutes, or until tender.",
-            "In a large pan, heat 1 tablespoon oil over medium heat. Add onions and cook, stirring occasionally, until they start to brown, about 8 minutes.",
-            "Add garlic, ginger, cumin, curry powder, turmeric, and cayenne pepper to the pan. Cook, stirring constantly, for 1-2 minutes.",
-            "Stir in coconut milk and vegetable broth. Bring to a simmer.",
-            "Add roasted sweet potatoes to the pan and stir to combine. Season with salt and pepper to taste.",
-            "Serve hot, garnished with chopped cilantro if desired."
-        ]
     }
 ]
