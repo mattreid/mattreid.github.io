@@ -330,8 +330,7 @@ class RecipeDetail {
 
                     ${recipe.source ? `
                         <div class="recipe-source">
-                            <h3 class="section-title">🔗 Source</h3>
-                            <a href="${recipe.source}" target="_blank" class="source-link">View Original Recipe</a>
+                            <h3 class="section-title">🔗 Source: <a href="${recipe.source}" target="_blank" class="source-link">${recipe.source}</a></h3>
                         </div>
                     ` : ''}
                 </div>
