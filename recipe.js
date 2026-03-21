@@ -450,9 +450,30 @@ class RecipeDetail {
     }
 
     scaleIngredient(ingredient, scaleFactor) {
-        // Improved scaling that handles decimals properly
-        return ingredient.replace(/(\d*\.?\d*)\s*([a-zA-Z]+)/g, (match, amount, unit) => {
-            const originalAmount = parseFloat(amount);
+        // Improved scaling that handles fractions, mixed numbers, and decimals properly
+        // Only match measurements at the start of the ingredient string
+        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+)\s*([a-zA-Z]+(?:\s+[a-zA-Z]+)*?)(?=\s|$)/g, (match, amount, unit) => {
+            let originalAmount;
+            
+            // Handle mixed numbers (e.g., "2 1/4")
+            if (amount.includes(' ') && amount.includes('/')) {
+                const parts = amount.split(' ');
+                const wholeNumber = parseInt(parts[0]);
+                const fraction = parts[1];
+                const fractionParts = fraction.split('/');
+                const fractionValue = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
+                originalAmount = wholeNumber + fractionValue;
+            }
+            // Handle simple fractions (e.g., "1/2")
+            else if (amount.includes('/')) {
+                const fractionParts = amount.split('/');
+                originalAmount = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
+            }
+            // Handle decimals and whole numbers
+            else {
+                originalAmount = parseFloat(amount);
+            }
+            
             const scaledAmount = originalAmount * scaleFactor;
             
             // Format the result properly
