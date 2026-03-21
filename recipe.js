@@ -419,6 +419,11 @@ class RecipeDetail {
 
     updateIngredients(scaleFactor) {
         const ingredientsList = document.getElementById('ingredientsList');
+        if (!ingredientsList) {
+            console.error('❌ Ingredients list element not found');
+            return;
+        }
+        
         this.updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
             return this.scaleIngredient(ingredient, scaleFactor);
         });
