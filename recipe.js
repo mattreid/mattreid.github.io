@@ -342,7 +342,7 @@ class RecipeDetail {
                             <span>Cook: ${recipe.cookTime}</span>
                         </div>
                         <div class="timing-item">
-                            <span>�</span>
+                            <span>⏰</span>
                             <span>Total: ${this.calculateTotalTime(recipe.prepTime, recipe.cookTime)}</span>
                         </div>
                         <div class="timing-item">
