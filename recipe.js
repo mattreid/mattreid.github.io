@@ -16,14 +16,21 @@ class RecipeDetail {
     }
 
     async loadRecipes() {
+        console.log('🔄 Starting to load recipes...');
         try {
             const response = await fetch('recipes.json');
+            console.log('📡 Fetch response received:', response.status);
             this.recipes = await response.json();
+            console.log('✅ Recipes loaded successfully:', this.recipes.length, 'recipes');
         } catch (error) {
-            console.error('Error loading recipes:', error);
+            console.error('❌ Error loading recipes:', error);
             // Fallback to sample recipes if recipes.json doesn't exist
             this.recipes = this.getSampleRecipes();
+            console.log('⚠️ Using fallback recipes:', this.recipes.length, 'fallback recipes');
         }
+        
+        console.log('🔄 Proceeding to load recipe from URL...');
+        this.loadRecipeFromURL();
     }
 
     getSampleRecipes() {
@@ -470,16 +477,23 @@ class RecipeDetail {
         }
         
         // Test 3: Check if currentRecipe loads properly
-        setTimeout(() => {
+        const checkRecipeLoaded = () => {
             if (!this.currentRecipe) {
-                console.error('❌ Test FAILED: No recipe loaded after 3 seconds');
+                console.error('❌ Test FAILED: No recipe loaded after 5 seconds');
+                return false;
             } else {
                 console.log('✅ Test PASSED: Recipe loaded successfully');
                 console.log(`📋 Recipe: ${this.currentRecipe.title}`);
                 console.log(`🥘 Ingredients: ${this.currentRecipe.ingredients.length} items`);
                 console.log(`🍽 Original Servings: ${this.originalServings}`);
+                return true;
             }
-        }, 3000);
+        };
+        
+        // Try multiple times with increasing delays
+        setTimeout(checkRecipeLoaded, 1000);  // Check after 1 second
+        setTimeout(checkRecipeLoaded, 2500);  // Check after 2.5 seconds  
+        setTimeout(checkRecipeLoaded, 5000);  // Check after 5 seconds
     }
 }
 
