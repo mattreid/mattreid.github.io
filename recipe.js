@@ -255,6 +255,11 @@ class RecipeDetail {
         return stars + empty;
     }
 
+    cleanSourceUrl(url) {
+        // Remove jump/anchor links from the displayed URL
+        return url.split('#')[0];
+    }
+
     showRecipeNotFound() {
         const detailContainer = document.getElementById('recipeDetail');
         detailContainer.innerHTML = `
@@ -330,7 +335,7 @@ class RecipeDetail {
 
                     ${recipe.source ? `
                         <div class="recipe-source">
-                            <h3 class="section-title">🔗 Source: <a href="${recipe.source}" target="_blank" class="source-link">${recipe.source}</a></h3>
+                            <h3 class="section-title">🔗 Source: <a href="${recipe.source}" target="_blank" class="source-link">${this.cleanSourceUrl(recipe.source)}</a></h3>
                         </div>
                     ` : ''}
                 </div>
