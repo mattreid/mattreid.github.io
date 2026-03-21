@@ -415,10 +415,19 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .serving-adjuster label {
     font-weight: 500;
+    flex-shrink: 0;
+}
+
+.serving-presets {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .serving-controls {
@@ -470,6 +479,10 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
     white-space: nowrap;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .preset-btn:hover {
@@ -489,6 +502,7 @@ body {
 
 /* Category Filter */
 .category-filter {
+    margin-top: 1rem;
     margin-bottom: 1.5rem;
 }
 
