@@ -332,6 +332,13 @@ class RecipeDetail {
                 <div class="recipe-detail-content">
                     <p class="recipe-detail-description">${recipe.description}</p>
                     
+                    <div class="recipe-category">
+                        <span class="category-tag clickable" onclick="recipeDetail.filterByCategory('${recipe.category || 'Uncategorized'}')">${recipe.category || 'Uncategorized'}</span>
+                        ${recipe.tags ? recipe.tags.map(tag => 
+                            `<span class="tag">${tag}</span>`
+                        ).join('') : ''}
+                    </div>
+                    
                     <div class="recipe-timing">
                         <div class="timing-item">
                             <span>🔪</span>
@@ -353,6 +360,12 @@ class RecipeDetail {
 
                     <div class="serving-adjuster">
                         <label for="servingCount">Servings:</label>
+                        <div class="serving-presets">
+                            <button class="preset-btn ${recipe.servings * 0.5 === Math.round(recipe.servings * 0.5) ? 'active' : ''}" onclick="recipeDetail.setServings(${Math.round(recipe.servings * 0.5)})">½</button>
+                            <button class="preset-btn active" onclick="recipeDetail.setServings(${recipe.servings})">Default</button>
+                            <button class="preset-btn" onclick="recipeDetail.setServings(${recipe.servings * 2})">Double</button>
+                            <button class="preset-btn" onclick="recipeDetail.setServings(${recipe.servings * 3})">Triple</button>
+                        </div>
                         <div class="serving-controls">
                             <button class="serving-btn" onclick="recipeDetail.adjustServings(-1)">−</button>
                             <span class="serving-count" id="servingCount">${recipe.servings}</span>
@@ -424,6 +437,44 @@ class RecipeDetail {
         
         const scaleFactor = newServings / this.originalServings;
         this.updateIngredients(scaleFactor);
+        
+        // Update preset button active states
+        this.updatePresetButtons(newServings);
+    }
+
+    setServings(servings) {
+        if (!this.currentRecipe) return;
+
+        const servingCountEl = document.getElementById('servingCount');
+        const roundedServings = Math.max(1, Math.round(servings));
+        
+        servingCountEl.textContent = roundedServings;
+        
+        const scaleFactor = roundedServings / this.originalServings;
+        this.updateIngredients(scaleFactor);
+        
+        // Update preset button active states
+        this.updatePresetButtons(roundedServings);
+    }
+
+    updatePresetButtons(currentServings) {
+        const presetButtons = document.querySelectorAll('.preset-btn');
+        const originalServings = this.originalServings;
+        
+        presetButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+        
+        // Check which preset matches the current servings
+        if (Math.round(currentServings) === Math.round(originalServings * 0.5)) {
+            presetButtons[0]?.classList.add('active'); // Half
+        } else if (Math.round(currentServings) === Math.round(originalServings)) {
+            presetButtons[1]?.classList.add('active'); // Default
+        } else if (Math.round(currentServings) === Math.round(originalServings * 2)) {
+            presetButtons[2]?.classList.add('active'); // Double
+        } else if (Math.round(currentServings) === Math.round(originalServings * 3)) {
+            presetButtons[3]?.classList.add('active'); // Triple
+        }
     }
 
     updateIngredients(scaleFactor) {
@@ -561,6 +612,11 @@ class RecipeDetail {
         } else {
             return amount;
         }
+    }
+
+    filterByCategory(category) {
+        // Navigate to main page with category filter
+        window.location.href = `index.html?category=${encodeURIComponent(category)}`;
     }
 }
 

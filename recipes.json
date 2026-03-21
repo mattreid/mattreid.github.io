@@ -8,6 +8,8 @@
         "cookTime": "50 min",
         "servings": 6,
         "complexity": 3,
+        "category": "Main Dishes",
+        "tags": ["vegan", "one-pot", "curry"],
         "source": "https://www.shelikesfood.com/one-pot-coconut-curry-quinoa-lentil-sweet-potatoes/#tasty-recipes-9904-jump-target",
         "ingredients": [
             "4 cups small diced sweet potato",
@@ -40,6 +42,8 @@
         "cookTime": "45 min",
         "servings": 4,
         "complexity": 3,
+        "category": "Main Dishes",
+        "tags": ["vegan", "spicy", "african"],
         "source": "https://www.veganricha.com/one-pan-harissa-chickpeas/#recipe",
         "ingredients": [
             "2 teaspoons oil",
@@ -80,6 +84,8 @@
         "cookTime": "5 min",
         "servings": 30,
         "complexity": 1,
+        "category": "Side Dishes",
+        "tags": ["vegan", "quick", "condiment"],
         "source": "https://www.youtube.com/watch?v=LBvr0K-6NIY&t",
         "ingredients": [
             ".67 tablespoons salt per cup of pickling liquid",
@@ -200,6 +206,8 @@
         "cookTime": "60 min",
         "servings": 12,
         "complexity": 3,
+        "category": "Desserts",
+        "tags": ["vegan", "gluten-free", "baking"],
         "source": "https://minimalistbaker.com/the-best-vegan-apple-crisp/#wprm-recipe-container-35437",
         "ingredients": [
             "8 medium-large apples (half tart, half sweet)",
@@ -266,6 +274,8 @@
         "cookTime": "40 min",
         "servings": 4,
         "complexity": 2,
+        "category": "Breakfast",
+        "tags": ["vegan", "protein", "meal-prep"],
         "source": "https://www.eatingbirdfood.com/protein-baked-oatmeal/#wprm-recipe-container-106958",
         "ingredients": [
             "1 cup old fashioned rolled oats",

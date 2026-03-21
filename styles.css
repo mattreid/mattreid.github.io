@@ -452,6 +452,117 @@ body {
     text-align: center;
 }
 
+/* Serving Presets */
+.serving-presets {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.preset-btn {
+    background: #f3f4f6;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.preset-btn:hover {
+    background: #e5e7eb;
+    border-color: var(--primary-color);
+}
+
+.preset-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.preset-btn.active:hover {
+    background: var(--primary-dark);
+}
+
+/* Category Filter */
+.category-filter {
+    margin-bottom: 1.5rem;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.category-btn {
+    background: #f3f4f6;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.category-btn:hover {
+    background: #e5e7eb;
+    border-color: var(--primary-color);
+}
+
+.category-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.category-btn.active:hover {
+    background: var(--primary-dark);
+}
+
+/* Recipe Category Tags */
+.recipe-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.category-tag {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.category-tag.clickable {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.category-tag.clickable:hover {
+    background: #d97706;
+}
+
+.tag {
+    background: #e5e7eb;
+    color: var(--text-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+
 /* Recipe Sections */
 .recipe-section {
     margin-bottom: 2rem;

@@ -9,7 +9,19 @@ class RecipeSite {
     async init() {
         await this.loadRecipes();
         this.setupEventListeners();
-        this.renderRecipeGrid();
+        
+        // Check for category filter in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryFilter = urlParams.get('category');
+        
+        if (categoryFilter) {
+            // Wait for category filter to be set up, then apply filter
+            setTimeout(() => {
+                this.applyCategoryFilter(categoryFilter);
+            }, 100);
+        } else {
+            this.renderRecipeGrid();
+        }
     }
 
     async loadRecipes() {
@@ -230,6 +242,67 @@ class RecipeSite {
         searchInput.addEventListener('input', (e) => {
             this.filterRecipes(e.target.value);
         });
+
+        // Category filter functionality
+        this.setupCategoryFilter();
+    }
+
+    setupCategoryFilter() {
+        // Get all unique categories
+        const categories = [...new Set(this.recipes.map(recipe => recipe.category || 'Uncategorized'))];
+        
+        // Create category filter UI
+        const searchSection = document.querySelector('.search-section');
+        const categoryFilter = document.createElement('div');
+        categoryFilter.className = 'category-filter';
+        categoryFilter.innerHTML = `
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">All</button>
+                ${categories.map(category => 
+                    `<button class="category-btn" data-category="${category}">${category}</button>`
+                ).join('')}
+            </div>
+        `;
+        
+        searchSection.appendChild(categoryFilter);
+        
+        // Add event listeners to category buttons
+        const categoryButtons = categoryFilter.querySelectorAll('.category-btn');
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Update active state
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                // Filter recipes
+                this.filterByCategory(e.target.dataset.category);
+            });
+        });
+    }
+
+    filterByCategory(category) {
+        if (category === 'all') {
+            this.renderRecipeGrid(this.recipes);
+        } else {
+            const filtered = this.recipes.filter(recipe => 
+                (recipe.category || 'Uncategorized') === category
+            );
+            this.renderRecipeGrid(filtered);
+        }
+    }
+
+    applyCategoryFilter(category) {
+        // Find and click the appropriate category button
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.category === category) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Apply the filter
+        this.filterByCategory(category);
     }
 
     renderRecipeGrid(recipesToRender = this.recipes) {
@@ -250,6 +323,9 @@ class RecipeSite {
                 <div class="recipe-content">
                     <h3 class="recipe-title">${recipe.title}</h3>
                     <p class="recipe-description">${recipe.description}</p>
+                    <div class="recipe-category">
+                        <span class="category-tag">${recipe.category || 'Uncategorized'}</span>
+                    </div>
                     <div class="recipe-meta">
                         <span>🔪 ${recipe.prepTime}</span>
                         <span>🔥 ${recipe.cookTime}</span>
