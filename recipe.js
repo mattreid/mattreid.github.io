@@ -2,6 +2,8 @@ class RecipeDetail {
     constructor() {
         this.recipes = [];
         this.currentRecipe = null;
+        this.originalServings = null;
+        this.updatedIngredients = [];
         this.originalServings = 1;
         this.init();
     }
