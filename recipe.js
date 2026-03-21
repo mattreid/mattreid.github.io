@@ -394,7 +394,7 @@ class RecipeDetail {
 
     scaleIngredient(ingredient, scaleFactor) {
         // Improved scaling that handles decimals properly
-        return ingredient.replace(/(\d+\.?\d*)\s*([a-zA-Z]+)/g, (match, amount, unit) => {
+        return ingredient.replace(/(\d*\.?\d*)\s*([a-zA-Z]+)/g, (match, amount, unit) => {
             const originalAmount = parseFloat(amount);
             const scaledAmount = originalAmount * scaleFactor;
             
