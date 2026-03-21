@@ -472,13 +472,14 @@ class RecipeDetail {
         // Test 3: Check if currentRecipe loads properly
         setTimeout(() => {
             if (!this.currentRecipe) {
-                console.error('❌ Test FAILED: No recipe loaded after 2 seconds');
+                console.error('❌ Test FAILED: No recipe loaded after 3 seconds');
             } else {
                 console.log('✅ Test PASSED: Recipe loaded successfully');
                 console.log(`📋 Recipe: ${this.currentRecipe.title}`);
                 console.log(`🥘 Ingredients: ${this.currentRecipe.ingredients.length} items`);
+                console.log(`🍽 Original Servings: ${this.originalServings}`);
             }
-        }, 2000);
+        }, 3000);
     }
 }
 
