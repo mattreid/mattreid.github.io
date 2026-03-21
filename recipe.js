@@ -10,6 +10,9 @@ class RecipeDetail {
     async init() {
         await this.loadRecipes();
         this.loadRecipeFromURL();
+        
+        // Run basic functionality tests
+        this.runTests();
     }
 
     async loadRecipes() {
@@ -385,11 +388,11 @@ class RecipeDetail {
 
     updateIngredients(scaleFactor) {
         const ingredientsList = document.getElementById('ingredientsList');
-        const updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
+        this.updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
             return this.scaleIngredient(ingredient, scaleFactor);
         });
-
-        ingredientsList.innerHTML = this.renderIngredients(updatedIngredients);
+        
+        ingredientsList.innerHTML = this.renderIngredients(this.updatedIngredients);
         this.setupIngredientCheckboxes();
     }
 
@@ -447,6 +450,37 @@ class RecipeDetail {
             return amount;
         }
     }
+
+    // Test functionality to catch common issues
+    runTests() {
+        console.log('🧪 Running Recipe Detail Tests...');
+        
+        // Test 1: Check if class properties are properly initialized
+        if (this.updatedIngredients === undefined) {
+            console.error('❌ Test FAILED: updatedIngredients is undefined');
+        } else {
+            console.log('✅ Test PASSED: updatedIngredients is properly initialized');
+        }
+        
+        // Test 2: Check if originalServings is properly set
+        if (this.originalServings === null) {
+            console.error('❌ Test FAILED: originalServings is null');
+        } else {
+            console.log('✅ Test PASSED: originalServings is properly initialized');
+        }
+        
+        // Test 3: Check if currentRecipe loads properly
+        setTimeout(() => {
+            if (!this.currentRecipe) {
+                console.error('❌ Test FAILED: No recipe loaded after 2 seconds');
+            } else {
+                console.log('✅ Test PASSED: Recipe loaded successfully');
+                console.log(`📋 Recipe: ${this.currentRecipe.title}`);
+                console.log(`🥘 Ingredients: ${this.currentRecipe.ingredients.length} items`);
+            }
+        }, 2000);
+    }
+}
 }
 
 // Initialize the recipe detail page when DOM is loaded
