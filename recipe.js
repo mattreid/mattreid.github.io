@@ -10,9 +10,6 @@ class RecipeDetail {
     async init() {
         await this.loadRecipes();
         this.loadRecipeFromURL();
-        
-        // Run basic functionality tests
-        this.runTests();
     }
 
     async loadRecipes() {
@@ -235,27 +232,45 @@ class RecipeDetail {
     }
 
     loadRecipeFromURL() {
+        console.log('🔍 Loading recipe from URL...');
         const urlParams = new URLSearchParams(window.location.search);
         const recipeId = urlParams.get('id');
         
-        if (recipeId) {
-            const recipe = this.recipes.find(r => r.id === recipeId);
-            if (recipe) {
-                this.currentRecipe = recipe;
-                this.originalServings = recipe.servings;
-                
-                // Update page title and header title
-                document.title = `${recipe.title} - Recipe`;
-                const pageTitleEl = document.getElementById('pageTitle');
-                if (pageTitleEl) {
-                    pageTitleEl.textContent = recipe.title;
-                }
-                
-                this.renderRecipeDetail(recipe);
-            } else {
-                this.showRecipeNotFound();
+        console.log('🔍 Recipe ID from URL:', recipeId);
+        console.log('🔍 Available recipes:', this.recipes?.length || 0, 'recipes');
+        
+        if (!recipeId) {
+            console.log('❌ No recipe ID found in URL');
+            this.showRecipeNotFound();
+            return;
+        }
+        
+        if (!this.recipes || this.recipes.length === 0) {
+            console.log('❌ No recipes loaded to search from');
+            this.showRecipeNotFound();
+            return;
+        }
+        
+        const recipe = this.recipes.find(r => r.id === recipeId);
+        console.log('🔍 Recipe found:', recipe ? recipe.title : 'Not found');
+        
+        if (recipe) {
+            this.currentRecipe = recipe;
+            this.originalServings = recipe.servings;
+            
+            console.log('✅ Recipe loaded successfully');
+            console.log('📋 Recipe:', recipe.title);
+            
+            // Update page title and header title
+            document.title = `${recipe.title} - Recipe`;
+            const pageTitleEl = document.getElementById('pageTitle');
+            if (pageTitleEl) {
+                pageTitleEl.textContent = recipe.title;
             }
+            
+            this.renderRecipeDetail(recipe);
         } else {
+            console.log('❌ Recipe not found in loaded recipes');
             this.showRecipeNotFound();
         }
     }
@@ -287,6 +302,12 @@ class RecipeDetail {
     }
 
     renderRecipeDetail(recipe) {
+        // Only render if recipe exists and has ingredients
+        if (!recipe || !recipe.ingredients || recipe.ingredients.length === 0) {
+            this.showRecipeNotFound();
+            return;
+        }
+        
         const detailContainer = document.getElementById('recipeDetail');
         detailContainer.innerHTML = `
             <div class="recipe-detail-page">
