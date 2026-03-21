@@ -32,170 +32,6 @@
         ]
     },
     {
-        "id": "chocolate-chip-cookies",
-        "title": "Classic Chocolate Chip Cookies",
-        "description": "Soft and chewy chocolate chip cookies that are perfect for any occasion.",
-        "image": "https://images.unsplash.com/photo-1596797038534-2a0472b6a2a5?w=400",
-        "prepTime": "15 min",
-        "cookTime": "12 min",
-        "servings": 24,
-        "complexity": 2,
-        "source": "https://www.allrecipes.com/recipe/10813/best-chocolate-chip-cookies/",
-        "ingredients": [
-            "2 1/4 cups all-purpose flour",
-            "1 tsp baking soda",
-            "1 tsp salt",
-            "1 cup butter, softened",
-            "3/4 cup granulated sugar",
-            "3/4 cup packed brown sugar",
-            "2 large eggs",
-            "2 tsp vanilla extract",
-            "2 cups chocolate chips"
-        ],
-        "instructions": [
-            "Preheat oven to 375°F (190°C).",
-            "In a small bowl, mix flour, baking soda, and salt.",
-            "In a large bowl, cream together butter and both sugars until fluffy.",
-            "Beat in eggs one at a time, then stir in vanilla.",
-            "Gradually blend in the flour mixture.",
-            "Stir in chocolate chips.",
-            "Drop rounded tablespoons of dough onto ungreased cookie sheets.",
-            "Bake for 9 to 11 minutes or until golden brown.",
-            "Cool on baking sheet for 2 minutes before removing to a wire rack."
-        ]
-    },
-    {
-        "id": "spaghetti-carbonara",
-        "title": "Authentic Spaghetti Carbonara",
-        "description": "Classic Italian pasta dish with eggs, cheese, and pancetta.",
-        "image": "https://images.unsplash.com/photo-1612874742237-65262208899b?w=400",
-        "prepTime": "10 min",
-        "cookTime": "20 min",
-        "servings": 4,
-        "complexity": 3,
-        "source": "https://www.seriouseats.com/spaghetti-carbonara-recipe",
-        "ingredients": [
-            "1 lb spaghetti",
-            "6 oz pancetta or guanciale, diced",
-            "4 large eggs",
-            "1 cup grated Pecorino Romano cheese",
-            "1/2 cup grated Parmesan cheese",
-            "Freshly ground black pepper",
-            "Salt for pasta water"
-        ],
-        "instructions": [
-            "Bring a large pot of salted water to boil and cook spaghetti according to package directions.",
-            "While pasta cooks, cook pancetta in a large skillet until crispy, about 8-10 minutes.",
-            "In a bowl, whisk together eggs, Pecorino Romano, Parmesan, and plenty of black pepper.",
-            "When pasta is al dente, reserve 1 cup pasta water, then drain.",
-            "Add hot pasta to the skillet with pancetta (heat off).",
-            "Pour egg mixture over pasta and toss quickly, adding pasta water as needed to create a creamy sauce.",
-            "Serve immediately with extra cheese and black pepper."
-        ]
-    },
-    {
-        "id": "chicken-stir-fry",
-        "title": "Quick Chicken Stir Fry",
-        "description": "A fast and healthy weeknight dinner with vegetables and tender chicken.",
-        "image": "https://images.unsplash.com/photo-1512058564366-18510be2f191?w=400",
-        "prepTime": "15 min",
-        "cookTime": "15 min",
-        "servings": 4,
-        "complexity": 2,
-        "source": "https://www.foodnetwork.com/recipes/food-network-kitchen/chicken-stir-fry-3362541",
-        "ingredients": [
-            "1 lb boneless chicken breast, cut into bite-sized pieces",
-            "2 tbsp soy sauce",
-            "1 tbsp cornstarch",
-            "2 tbsp vegetable oil",
-            "1 bell pepper, sliced",
-            "1 broccoli head, cut into florets",
-            "2 cloves garlic, minced",
-            "1 tbsp fresh ginger, minced",
-            "1/4 cup chicken broth",
-            "2 tbsp oyster sauce",
-            "1 tsp sesame oil"
-        ],
-        "instructions": [
-            "Marinate chicken in soy sauce and cornstarch for 10 minutes.",
-            "Heat vegetable oil in a large skillet or wok over high heat.",
-            "Add chicken and stir-fry until golden and cooked through, about 5-6 minutes.",
-            "Remove chicken and set aside.",
-            "Add bell pepper and broccoli to the same skillet, stir-frying for 3-4 minutes.",
-            "Add garlic and ginger, cook for 30 seconds until fragrant.",
-            "Return chicken to the skillet along with chicken broth and oyster sauce.",
-            "Stir everything together and cook for 2-3 minutes.",
-            "Drizzle with sesame oil and serve over rice."
-        ]
-    },
-    {
-        "id": "banana-bread",
-        "title": "Moist Banana Bread",
-        "description": "A classic banana bread recipe that's perfect for using upripe bananas.",
-        "image": "https://images.unsplash.com/photo-1604906566336-3a55b1d576c9?w=400",
-        "prepTime": "15 min",
-        "cookTime": "60 min",
-        "servings": 12,
-        "complexity": 1,
-        "source": "https://www.baking-sense.com/2019/03/19/the-best-banana-bread-recipe/",
-        "ingredients": [
-            "3 ripe bananas, mashed",
-            "1/3 cup melted butter",
-            "1 tsp baking soda",
-            "Pinch of salt",
-            "3/4 cup sugar",
-            "1 large egg, beaten",
-            "1 tsp vanilla extract",
-            "1 1/2 cups all-purpose flour"
-        ],
-        "instructions": [
-            "Preheat oven to 350°F (175°C). Grease a 9x5 inch loaf pan.",
-            "In a large bowl, mash the bananas with a fork until smooth.",
-            "Stir melted butter into the mashed bananas.",
-            "Mix in baking soda and salt.",
-            "Stir in sugar, beaten egg, and vanilla extract.",
-            "Mix in flour until just combined.",
-            "Pour batter into prepared loaf pan.",
-            "Bake for 60-65 minutes, or until a toothpick inserted into center comes out clean.",
-            "Cool in pan for 10 minutes, then turn out onto a wire rack to cool completely."
-        ]
-    },
-    {
-        "id": "greek-salad",
-        "title": "Traditional Greek Salad",
-        "description": "Fresh and colorful Mediterranean salad with feta cheese and olives.",
-        "image": "https://images.unsplash.com/photo-1525373612132-b3e820b87cea?w=400",
-        "prepTime": "20 min",
-        "cookTime": "0 min",
-        "servings": 6,
-        "complexity": 1,
-        "source": "https://www.greekcookbook.com/recipes/greek-salad-recipe/",
-        "ingredients": [
-            "2 large tomatoes, cut into wedges",
-            "1 cucumber, sliced",
-            "1 red onion, thinly sliced",
-            "1 green bell pepper, cut into rings",
-            "1 cup Kalamata olives",
-            "8 oz feta cheese, cubed",
-            "1/4 cup extra virgin olive oil",
-            "2 tbsp red wine vinegar",
-            "1 tsp dried oregano",
-            "Salt and pepper to taste"
-        ],
-        "instructions": [
-            "Cut tomatoes into wedges and place in a large bowl.",
-            "Slice cucumber and add to the bowl.",
-            "Thinly slice red onion and add to vegetables.",
-            "Cut green bell pepper into rings and add to the salad.",
-            "Add Kalamata olives to the bowl.",
-            "Gently fold in cubed feta cheese.",
-            "In a small bowl, whisk together olive oil, red wine vinegar, and oregano.",
-            "Pour dressing over salad and toss gently.",
-            "Season with salt and pepper to taste.",
-            "Let salad sit for 15 minutes before serving to allow flavors to meld."
-        ]
-    },
-    {
         "id": "harissa-chickpeas",
         "title": "Harissa Chickpeas",
         "description": "A flavorful and spicy North African dish with chickpeas in a rich harissa sauce.",
@@ -289,6 +125,69 @@
             "Cover slow cooker and set it to cook for 3 hours on high heat, or 6 hours on low heat. If you need to cook it longer due to your schedule, I'd recommend adding 2-4 tablespoons of water to mixture to help prevent sauce from over-cooking.",
             "Once cooking is done, give chickpeas a stir and serve them warm over a bed of white rice (or cauliflower rice) with a sprinkling of green onions and sesame seeds on top.",
             "Leftovers can be stored in an airtight container in the fridge for up to a week."
+        ]
+    },
+    {
+        "id": "coconut-curry-lentils",
+        "title": "Creamy Coconut Curry Lentils with Spinach",
+        "description": "Rich, creamy, and earthy coconut curry lentils that are an easy and delicious vegan option for dinner or weekly meal prep.",
+        "image": "https://images.unsplash.com/photo-1546548977-91b00cf5e43e?w=400",
+        "prepTime": "10 min",
+        "cookTime": "30 min",
+        "servings": 4,
+        "complexity": 2,
+        "source": "https://www.budgetbytes.com/creamy-coconut-curry-lentils-with-spinach/",
+        "ingredients": [
+            "2 tablespoons olive oil",
+            "2 cloves garlic, minced",
+            "1 teaspoon grated fresh ginger",
+            "1 small yellow onion, diced",
+            "1 tablespoon curry powder",
+            "1 cup brown lentils (dry)",
+            "2 cups vegetable broth",
+            "1 13oz. can coconut milk",
+            "3 cups fresh baby spinach",
+            "4 cups cooked rice (for serving)",
+            "1/4 cup chopped fresh cilantro (for garnish)"
+        ],
+        "instructions": [
+            "Mince the garlic, grate the ginger, and dice the onion. Add the olive oil, garlic, and ginger to a deep skillet, Dutch oven, or soup pot. Sauté the garlic and ginger over medium heat for 1 minute, or just until the garlic becomes soft and fragrant.",
+            "Add the diced onion to the skillet and continue to sauté over medium until the onion is soft and translucent. Add the curry powder and continue to sauté for about one minute more to toast the spices.",
+            "Add the dry lentils and vegetable broth to the skillet. Stir to dissolve any browned bits from the bottom of the skillet. Place a lid on top, turn the heat up to medium-high, and bring the broth to a boil. Once boiling, turn the heat down to low, and let it simmer for 20 minutes, stirring occasionally.",
+            "After simmering for 20 minutes the lentils should be tender and most of the broth absorbed. Add the can of coconut milk and stir to combine. Turn the heat back up to medium and allow the skillet to come back up to a simmer. Let it simmer without a lid for an additional 10 minutes, stirring often, to thicken the mixture.",
+            "Once thickened, turn the heat off. Add the fresh spinach and stir gently until the spinach has wilted. Taste the mixture and adjust the salt or curry powder to your liking, if needed.",
+            "Serve over a bowl of rice, and top with chopped cilantro if desired."
+        ]
+    },
+    {
+        "id": "spicy-gochujang-tofu",
+        "title": "Spicy Gochujang Tomato Tofu",
+        "description": "A spicy, umami and slightly sweet sauce coats chewy tofu pieces, cooked to golden perfection. This dish is super flavourful and made with only 7 ingredients, perfect as a quick weeknight meal or a lazy weekend dinner.",
+        "image": "https://images.unsplash.com/photo-1596797038534-2a0472b6a2a5?w=400",
+        "prepTime": "15 min",
+        "cookTime": "20 min",
+        "servings": 2,
+        "complexity": 2,
+        "source": "https://www.pickuplimes.com/recipe/spicy-gochujang-tomato-tofu-1955",
+        "ingredients": [
+            "1 cup long-grain white rice",
+            "1 tablespoon vegetable oil",
+            "11 oz firm tofu, pressed, cut into 1 cm cubes",
+            "1/4 cup gochujang, or less for less heat",
+            "5 garlic cloves, minced",
+            "3 tablespoons reduced-sodium soy sauce",
+            "2 tablespoons light brown sugar",
+            "3.5 cups cherry tomatoes, halved",
+            "toasted sesame seeds (optional garnish)",
+            "sliced green onion (optional garnish)"
+        ],
+        "instructions": [
+            "Cook the rice according to the package instructions.",
+            "Meanwhile, heat the oil in a sauté pan over medium-high heat and cook the tofu until golden on all sides, about 10 minutes.",
+            "Meanwhile, mix the gochujang, garlic, soy sauce, and sugar in a bowl. Set aside.",
+            "When the tofu is golden, transfer it to a plate. Add the tomatoes to the now-empty pan, and cook for 3 minutes.",
+            "Add the sauce and cook for an additional 3 minutes.",
+            "Stir in the tofu, then serve alongside the warm rice. Garnish as desired, and enjoy!"
         ]
     }
 ]
