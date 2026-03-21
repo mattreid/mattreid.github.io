@@ -481,10 +481,10 @@ class RecipeDetail {
         }, 2000);
     }
 }
-}
 
 // Initialize the recipe detail page when DOM is loaded
 let recipeDetail;
 document.addEventListener('DOMContentLoaded', () => {
     recipeDetail = new RecipeDetail();
+    recipeDetail.runTests();
 });
