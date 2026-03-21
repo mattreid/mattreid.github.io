@@ -268,10 +268,12 @@ class RecipeDetail {
                 pageTitleEl.textContent = recipe.title;
             }
             
-            // Initialize ingredients for scaling
-            this.updateIngredients(1); // Initialize with scale factor of 1
-            
             this.renderRecipeDetail(recipe);
+            
+            // Initialize ingredients for scaling after DOM is rendered
+            setTimeout(() => {
+                this.updateIngredients(1); // Initialize with scale factor of 1
+            }, 50);
         } else {
             console.log('❌ Recipe not found in loaded recipes');
             this.showRecipeNotFound();
@@ -355,7 +357,7 @@ class RecipeDetail {
                     <div class="recipe-section">
                         <h2 class="section-title">🥘 Ingredients</h2>
                         <ul class="ingredients-list" id="ingredientsList">
-                            ${this.renderIngredients(updatedIngredients)}
+                            ${this.renderIngredients(this.updatedIngredients || this.currentRecipe.ingredients)}
                         </ul>
                     </div>
 
@@ -535,35 +537,35 @@ class RecipeDetail {
         }, 3000);
     }
 
-calculateTotalTime(prepTime, cookTime) {
-    // Simple time calculation - this could be enhanced
-    const prepMinutes = this.parseTime(prepTime);
-    const cookMinutes = this.parseTime(cookTime);
-    const totalMinutes = prepMinutes + cookMinutes;
-    
-    if (totalMinutes < 60) {
-        return `${totalMinutes} min`;
-    } else {
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = totalMinutes % 60;
-        return minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
+    calculateTotalTime(prepTime, cookTime) {
+        // Simple time calculation - this could be enhanced
+        const prepMinutes = this.parseTime(prepTime);
+        const cookMinutes = this.parseTime(cookTime);
+        const totalMinutes = prepMinutes + cookMinutes;
+        
+        if (totalMinutes < 60) {
+            return `${totalMinutes} min`;
+        } else {
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+            return minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
+        }
     }
-}
 
-parseTime(timeString) {
-    // Parse time strings like "15 min", "1 hour", "2h 30m"
-    const match = timeString.match(/(\d+)\s*(hour|hr|h|min|minute|m)/i);
-    if (!match) return 0;
-    
-    const amount = parseInt(match[1]);
-    const unit = match[2].toLowerCase();
-    
-    if (unit.startsWith('h')) {
-        return amount * 60;
-    } else {
-        return amount;
+    parseTime(timeString) {
+        // Parse time strings like "15 min", "1 hour", "2h 30m"
+        const match = timeString.match(/(\d+)\s*(hour|hr|h|min|minute|m)/i);
+        if (!match) return 0;
+        
+        const amount = parseInt(match[1]);
+        const unit = match[2].toLowerCase();
+        
+        if (unit.startsWith('h')) {
+            return amount * 60;
+        } else {
+            return amount;
+        }
     }
-}
 }
 
 // Initialize the recipe detail page when DOM is loaded
