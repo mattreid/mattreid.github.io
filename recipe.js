@@ -320,7 +320,7 @@ class RecipeDetail {
                     <div class="recipe-section">
                         <h2 class="section-title">🥘 Ingredients</h2>
                         <ul class="ingredients-list" id="ingredientsList">
-                            ${this.renderIngredients(recipe.ingredients)}
+                            ${this.renderIngredients(updatedIngredients)}
                         </ul>
                     </div>
 
