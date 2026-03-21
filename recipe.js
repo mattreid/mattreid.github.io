@@ -13,20 +13,15 @@ class RecipeDetail {
     }
 
     async loadRecipes() {
-        console.log('🔄 Starting to load recipes...');
         try {
             const response = await fetch('recipes.json');
-            console.log('📡 Fetch response received:', response.status);
             this.recipes = await response.json();
-            console.log('✅ Recipes loaded successfully:', this.recipes.length, 'recipes');
         } catch (error) {
             console.error('❌ Error loading recipes:', error);
             // Fallback to sample recipes if recipes.json doesn't exist
             this.recipes = this.getSampleRecipes();
-            console.log('⚠️ Using fallback recipes:', this.recipes.length, 'fallback recipes');
         }
         
-        console.log('🔄 Proceeding to load recipe from URL...');
         this.loadRecipeFromURL();
     }
 
@@ -232,34 +227,24 @@ class RecipeDetail {
     }
 
     loadRecipeFromURL() {
-        console.log('🔍 Loading recipe from URL...');
         const urlParams = new URLSearchParams(window.location.search);
         const recipeId = urlParams.get('id');
         
-        console.log('🔍 Recipe ID from URL:', recipeId);
-        console.log('🔍 Available recipes:', this.recipes?.length || 0, 'recipes');
-        
         if (!recipeId) {
-            console.log('❌ No recipe ID found in URL');
             this.showRecipeNotFound();
             return;
         }
         
         if (!this.recipes || this.recipes.length === 0) {
-            console.log('❌ No recipes loaded to search from');
             this.showRecipeNotFound();
             return;
         }
         
         const recipe = this.recipes.find(r => r.id === recipeId);
-        console.log('🔍 Recipe found:', recipe ? recipe.title : 'Not found');
         
         if (recipe) {
             this.currentRecipe = recipe;
             this.originalServings = recipe.servings;
-            
-            console.log('✅ Recipe loaded successfully');
-            console.log('📋 Recipe:', recipe.title);
             
             // Update page title and header title
             document.title = `${recipe.title} - Recipe`;
@@ -275,20 +260,42 @@ class RecipeDetail {
                 this.updateIngredients(1); // Initialize with scale factor of 1
             }, 50);
         } else {
-            console.log('❌ Recipe not found in loaded recipes');
             this.showRecipeNotFound();
         }
     }
 
-    getComplexityStars(complexity) {
-        const stars = '⭐'.repeat(complexity || 3);
-        const empty = '☆'.repeat(5 - (complexity || 3));
-        return stars + empty;
+    getComplexityDisplay(complexity) {
+        const level = complexity || 3;
+        let color;
+        if (level <= 2) {
+            color = 'green';
+        } else if (level <= 3) {
+            color = 'gray';
+        } else {
+            color = 'red';
+        }
+        return `<span style="color: ${color}">${level}</span>`;
     }
 
     cleanSourceUrl(url) {
         // Remove jump/anchor links from the displayed URL
-        return url.split('#')[0];
+        const cleanUrl = url.split('#')[0];
+        
+        // On mobile screens (width <= 768px), show just the domain without www and .com
+        if (window.innerWidth <= 768) {
+            try {
+                const urlObj = new URL(cleanUrl);
+                let hostname = urlObj.hostname;
+                // Remove www. and .com/.net/.org etc.
+                hostname = hostname.replace(/^www\./, '');
+                hostname = hostname.replace(/\.(com|net|org|io|co|us|uk|ca|au|de|fr|it|es|jp|cn|in|br|mx|ru)$/i, '');
+                return hostname;
+            } catch (e) {
+                return cleanUrl;
+            }
+        }
+        
+        return cleanUrl;
     }
 
     showRecipeNotFound() {
@@ -327,7 +334,7 @@ class RecipeDetail {
                     
                     <div class="recipe-timing">
                         <div class="timing-item">
-                            <span>⏱️</span>
+                            <span>🔪</span>
                             <span>Prep: ${recipe.prepTime}</span>
                         </div>
                         <div class="timing-item">
@@ -335,12 +342,12 @@ class RecipeDetail {
                             <span>Cook: ${recipe.cookTime}</span>
                         </div>
                         <div class="timing-item">
-                            <span>📊</span>
+                            <span>�</span>
                             <span>Total: ${this.calculateTotalTime(recipe.prepTime, recipe.cookTime)}</span>
                         </div>
                         <div class="timing-item">
-                            <span>📊</span>
-                            <span>Complexity: ${this.getComplexityStars(recipe.complexity || 3)}</span>
+                            <span>🧠</span>
+                            <span>Complexity: ${this.getComplexityDisplay(recipe.complexity || 3)}</span>
                         </div>
                     </div>
 
