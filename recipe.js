@@ -366,11 +366,7 @@ class RecipeDetail {
                             <button class="preset-btn" onclick="recipeDetail.setServings(${recipe.servings * 2})">Double</button>
                             <button class="preset-btn" onclick="recipeDetail.setServings(${recipe.servings * 3})">Triple</button>
                         </div>
-                        <div class="serving-controls">
-                            <button class="serving-btn" onclick="recipeDetail.adjustServings(-1)">−</button>
-                            <span class="serving-count" id="servingCount">${recipe.servings}</span>
-                            <button class="serving-btn" onclick="recipeDetail.adjustServings(1)">+</button>
-                        </div>
+                        <span class="serving-count" id="servingCount">${recipe.servings}</span>
                         <span id="originalServings" style="display: none;">${this.originalServings}</span>
                     </div>
 
@@ -395,6 +391,14 @@ class RecipeDetail {
                             <h3 class="section-title">🔗 Source: <a href="${recipe.source}" target="_blank" class="source-link">${this.cleanSourceUrl(recipe.source)}</a></h3>
                         </div>
                     ` : ''}
+                </div>
+
+                ${recipe.notes ? `
+                    <div class="recipe-section">
+                        <h2 class="section-title">📝 Notes</h2>
+                        <p>${recipe.notes}</p>
+                    </div>
+                ` : ''}
                 </div>
             </div>
         `;
@@ -423,23 +427,6 @@ class RecipeDetail {
                 }
             });
         });
-    }
-
-    adjustServings(change) {
-        if (!this.currentRecipe) return;
-
-        const servingCountEl = document.getElementById('servingCount');
-        const originalServingsEl = document.getElementById('originalServings');
-        let currentServings = parseInt(servingCountEl.textContent);
-        const newServings = Math.max(1, currentServings + change);
-        
-        servingCountEl.textContent = newServings;
-        
-        const scaleFactor = newServings / this.originalServings;
-        this.updateIngredients(scaleFactor);
-        
-        // Update preset button active states
-        this.updatePresetButtons(newServings);
     }
 
     setServings(servings) {

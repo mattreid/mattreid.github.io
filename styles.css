@@ -457,7 +457,12 @@ body {
 
 .serving-count {
     font-weight: 600;
-    min-width: 30px;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    padding: 0.5rem 1rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    min-width: 60px;
     text-align: center;
 }
 
