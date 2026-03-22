@@ -754,3 +754,32 @@ body {
         font-size: 0.8rem;
     }
 }
+
+/* Notes Section */
+.notes-list {
+    list-style: none;
+}
+
+.note-item {
+    padding: 0.75rem 0.75rem 0 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-indent: -1.5rem;
+}
+
+.note-item:last-child {
+    border-bottom: none;
+}
+
+.note-item::before {
+    content: "•";
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}

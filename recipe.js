@@ -396,17 +396,11 @@ class RecipeDetail {
                     ` : ''}
                 </div>
 
-                ${recipe.notes ? `
-                    <div class="recipe-section">
-                        <h2 class="section-title">📌 Notes</h2>
-                        ${Array.isArray(recipe.notes) ? `
-                            <ul class="notes-list">
-                                ${recipe.notes.map(note => `<li class="note-item">${note}</li>`).join('')}
-                            </ul>
-                        ` : `<p>${recipe.notes}</p>`}
+                ${recipe.source ? `
+                    <div class="recipe-source">
+                        <h3 class="section-title">🔗 Source: <a href="${recipe.source}" target="_blank" class="source-link">${this.cleanSourceUrl(recipe.source)}</a></h3>
                     </div>
                 ` : ''}
-                </div>
             </div>
         `;
 
