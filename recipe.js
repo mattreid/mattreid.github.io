@@ -380,23 +380,30 @@ class RecipeDetail {
                     <div class="recipe-section">
                         <h2 class="section-title">📝 Instructions</h2>
                         <ol class="instructions-list">
-                            ${recipe.instructions.map(instruction => 
-                                `<li class="instruction-item">${instruction}</li>`
-                            ).join('')}
+                            ${this.renderInstructions(recipe.instructions)}
                         </ol>
                     </div>
 
-                    ${recipe.source ? `
-                        <div class="recipe-source">
-                            <h3 class="section-title">🔗 Source: <a href="${recipe.source}" target="_blank" class="source-link">${this.cleanSourceUrl(recipe.source)}</a></h3>
+                    ${recipe.notes ? `
+                        <div class="recipe-section">
+                            <h2 class="section-title">📌 Notes</h2>
+                            ${Array.isArray(recipe.notes) ? `
+                                <ul class="notes-list">
+                                    ${recipe.notes.map(note => `<li class="note-item">${note}</li>`).join('')}
+                                </ul>
+                            ` : `<p>${recipe.notes}</p>`}
                         </div>
                     ` : ''}
                 </div>
 
                 ${recipe.notes ? `
                     <div class="recipe-section">
-                        <h2 class="section-title">📝 Notes</h2>
-                        <p>${recipe.notes}</p>
+                        <h2 class="section-title">📌 Notes</h2>
+                        ${Array.isArray(recipe.notes) ? `
+                            <ul class="notes-list">
+                                ${recipe.notes.map(note => `<li class="note-item">${note}</li>`).join('')}
+                            </ul>
+                        ` : `<p>${recipe.notes}</p>`}
                     </div>
                 ` : ''}
                 </div>
