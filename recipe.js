@@ -422,6 +422,14 @@ class RecipeDetail {
         ).join('');
     }
 
+    renderInstructions(instructions) {
+        return instructions.map((instruction, index) => 
+            `<li class="instruction-item">
+                ${instruction}
+            </li>`
+        ).join('');
+    }
+
     setupIngredientCheckboxes() {
         const checkboxes = document.querySelectorAll('.ingredient-checkbox');
         checkboxes.forEach(checkbox => {
