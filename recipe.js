@@ -360,13 +360,13 @@ class RecipeDetail {
 
                     <div class="serving-adjuster">
                         <label for="servingCount">Servings:</label>
+                        <span class="serving-count" id="servingCount">${recipe.servings}</span>
                         <div class="serving-presets">
                             <button class="preset-btn" onclick="recipeDetail.setServings(${Math.round(recipe.servings * 0.5)})">½</button>
                             <button class="preset-btn active" onclick="recipeDetail.setServings(${recipe.servings})">Default</button>
                             <button class="preset-btn" onclick="recipeDetail.setServings(${recipe.servings * 2})">Double</button>
                             <button class="preset-btn" onclick="recipeDetail.setServings(${recipe.servings * 3})">Triple</button>
                         </div>
-                        <span class="serving-count" id="servingCount">${recipe.servings}</span>
                         <span id="originalServings" style="display: none;">${this.originalServings}</span>
                     </div>
 
