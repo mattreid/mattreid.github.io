@@ -454,33 +454,34 @@
         "title": "Hearty Vegan Chorizo Chili",
         "description": "A thick and hearty vegan chili packed with plant-based chorizo, black beans, salsa, and warming spices. Ready in 30 minutes with only 9 simple ingredients!",
         "image": "https://frommybowl.com/wp-content/uploads/2020/09/Vegan_Chorizo_Chili_TraderJoes_GlutenFree_FromMyBowl-3.jpg",
-        "prepTime": "5 min",
-        "cookTime": "25 min",
+        "prepTime": "7 min",
+        "cookTime": "20 min",
         "servings": 6,
-        "complexity": 2,
+        "complexity": 1,
         "category": "Main Dishes",
         "tags": ["vegan", "chili", "mexican"],
         "source": "https://frommybowl.com/hearty-vegan-chorizo-chili/",
         "ingredients": [
-            "1 package vegan chorizo (about 12 ounces)",
-            "1 can black beans (15 ounces), drained and rinsed",
-            "1 jar salsa (16 ounces)",
-            "1 can diced tomatoes (15 ounces)",
+            "12 ounces (340g) vegan chorizo",
+            "½ yellow onion, diced",
             "1 red bell pepper, diced",
-            "1 yellow onion, chopped",
-            "3 cloves garlic, minced",
-            "1 tablespoon ground cumin",
-            "1 bunch cilantro, chopped",
-            "1 cup water or vegetable broth"
+            "2-3 cloves garlic, minced",
+            "½ bunch cilantro, stems finely chopped and leaves divided",
+            "2 teaspoons ground cumin",
+            "1 15-ounce (425g) can black beans, drained and rinsed",
+            "16 ounces chunky salsa (mild, medium, or hot)",
+            "1 28-ounce (794g) can diced (or crushed) tomatoes",
+            "Optional: tortilla chips, to serve"
         ],
         "instructions": [
-            "Fry chorizo, garlic, and cilantro stems together in a pan until garlic is golden, then stir in cumin.",
-            "Toss in salsa, beans, bell pepper, and tomatoes and give it a good stir. Add in extra water, then bring to a boil over high heat.",
-            "Simmer for 10-12 minutes over medium-low heat, stirring occasionally.",
-            "Serve warm, topped with cilantro."
+            "Cook the chorizo, onion, garlic, and cilantro stems in a large nonstick pot over medium-high heat. Sauté for 3-5 minutes until onions are translucent. Add cumin and cook for 60 seconds.",
+            "Add bell pepper, beans, salsa, and diced tomatoes. Fill the salsa jar with water, give it a good shake, and add to the pot. Bring to a boil over high heat, then reduce to medium-low and simmer.",
+            "Simmer for 10-12 minutes, stirring occasionally. Divide into serving bowls and top with cilantro leaves. Serve with tortilla chips. Leftovers keep in fridge for up to 5 days."
         ],
         "notes": [
             "Great for meal prep! The chorizo adds authentic flavor and beans make it hearty.",
+            "Can't find vegan chorizo? Use vegan ground beef with 1-2 tsp taco seasoning.",
+            "Alternative proteins: finely chopped mushrooms or cooked lentils work well.",
             "Top with tortilla chips or serve over rice for a complete meal.",
             "This chili freezes well for up to 2 months."
         ]
