@@ -136,7 +136,8 @@
             "30 - 60 mins before ready to eat, add in the bell pepper and zucchini (if using), so they hold their texture.",
             "Once cooking is done, give chickpeas a stir and serve them warm over a bed of white rice (or cauliflower rice) with a sprinkling of green onions and sesame seeds on top.",
             "Leftovers can be stored in an airtight container in the fridge for up to a week."
-        ]
+        ],
+        "notes": "Lots of veggies work well in this. If they're hearty, you can toss them in at the start, or if they're more delicate, add them closer to the end. Doubling the sauce can be a good idea. You can bulk it up with some tempeh, tvp/protein crumble, or nuts."
     },
     {
         "id": "coconut-curry-lentils",
@@ -159,7 +160,8 @@
             "1 13oz. can coconut milk",
             "3 cups fresh baby spinach",
             "4 cups cooked rice (for serving)",
-            "1/4 cup chopped fresh cilantro (for garnish)"
+            "1/4 cup chopped fresh cilantro (for garnish)",
+            "1/2 cup cashews (optional)"
         ],
         "instructions": [
             "Mince the garlic, grate the ginger, and dice the onion. Add the olive oil, garlic, and ginger to a deep skillet, Dutch oven, or soup pot. Sauté the garlic and ginger over medium heat for 1 minute, or just until the garlic becomes soft and fragrant.",
@@ -168,7 +170,8 @@
             "After simmering for 20 minutes the lentils should be tender and most of the broth absorbed. Add the can of coconut milk and stir to combine. Turn the heat back up to medium and allow the skillet to come back up to a simmer. Let it simmer without a lid for an additional 10 minutes, stirring often, to thicken the mixture.",
             "Once thickened, turn the heat off. Add the fresh spinach and stir gently until the spinach has wilted. Taste the mixture and adjust the salt or curry powder to your liking, if needed.",
             "Serve over a bowl of rice, and top with chopped cilantro if desired."
-        ]
+        ],
+        "notes": "If adding cashews, you can toss unroasted ones in along with the coconut milk. If already roasted, add them at the very end to avoid bitterness."
     },
     {
         "id": "spicy-gochujang-tofu",
@@ -189,6 +192,7 @@
             "3 tablespoons reduced-sodium soy sauce",
             "2 tablespoons light brown sugar",
             "3.5 cups cherry tomatoes, halved",
+            "greens (optional)",
             "toasted sesame seeds (optional garnish)",
             "sliced green onion (optional garnish)"
         ],
@@ -197,9 +201,11 @@
             "Meanwhile, heat the oil in a sauté pan over medium-high heat and cook the tofu until golden on all sides, about 10 minutes.",
             "Meanwhile, mix the gochujang, garlic, soy sauce, and sugar in a bowl. Set aside.",
             "When the tofu is golden, transfer it to a plate. Add the tomatoes to the now-empty pan, and cook for 3 minutes.",
-            "Add the sauce and cook for an additional 3 minutes.",
+            "Add the sauce and greens, if using, and cook for an additional 3 minutes.",
             "Stir in the tofu, then serve alongside the warm rice. Garnish as desired, and enjoy!"
-        ]
+        ],
+        "notes": "Hearty greens work well, such as spinach or kale. If using kale, add a little earlier in the process."
+        
     },
     {
         "id": "vegan-apple-crisp",
@@ -240,7 +246,8 @@
             "Bake for 50 minutes to 1 hour (uncovered) or until filling is bubbly, apples are very fork tender, and topping is deep golden brown.",
             "Let rest at least 30 minutes before serving. This is delicious with coconut whipped cream or vanilla bean coconut ice cream.",
             "Best when fresh, though leftovers keep covered in refrigerator up to 3 days, or in freezer up to 1 month. Reheat in microwave or in a 350°F (176°C) oven until warmed through."
-        ]
+        ],
+        "notes": "Consider swapping some water for hard cider, or add a splash of bourbon/whiskey to add more depth. Adding some sour from rhubarb or cranberries levels things up."
     },
     {
         "id": "crispy-seitan",
@@ -255,7 +262,7 @@
         "ingredients": [
             "1/3 cup vital wheat gluten",
             "1 tablespoon nutritional yeast",
-            "1 tablespoon powdered peanut butter",
+            "1 tablespoon powdered peanut butter (optional)",
             "1 teaspoon garlic powder",
             "1/2 teaspoon onion powder",
             "1/2 teaspoon salt",
@@ -267,7 +274,8 @@
             "Add water and stir until a dough forms. Knead it lightly for 30 seconds to activate the gluten.",
             "Place the dough into your preheated waffle maker and cook for 5 minutes, or until golden and firm.",
             "Let cool slightly, then break apart into chunks."
-        ]
+        ],
+        "notes": "Powdered peanut butter is not necessary. A splash of soy sauce, or spicy heat works well."
     },
     {
         "id": "protein-baked-oatmeal",
@@ -286,12 +294,12 @@
             "1/2 scoop vanilla protein powder",
             "1 tablespoon peanut butter",
             "1/2 cup unsweetened almond milk",
-            "1 egg",
+            "1 flax egg (1 tbsp ground flax + 2.5 tbsp water)",
             "1 tablespoon maple syrup",
             "1/2 tablespoon coconut oil",
             "1/4 teaspoon vanilla extract",
             "1/4 teaspoon salt",
-            "1/2 cup fresh blueberries"
+            "1/2 cup blueberries (fresh or frozen)"
         ],
         "instructions": [
             "Preheat oven to 375°F (190°C) and lightly grease a 1.5 quart baking dish.",
@@ -301,7 +309,8 @@
             "Transfer mixture to the prepared baking dish and spread evenly.",
             "Bake for 35-40 minutes until edges are golden and center is set.",
             "Let cool for 5 minutes before serving. Top with additional blueberries if desired."
-        ]
+        ],
+        "notes": "Adding a few tbsp chia can help improve the texture, and boost nutrition."
     },
     {
         "id": "vegan-chicken-fajitas",
@@ -314,21 +323,11 @@
         "complexity": 2,
         "source": "https://www.youtube.com/watch?v=A5ZvijZcvow",
         "ingredients": [
-            "3 teaspoons seasoned salt",
-            "3 teaspoons dried oregano",
-            "2 teaspoons cumin",
-            "2 teaspoons garlic powder",
-            "1 teaspoon chili powder",
-            "1 teaspoon paprika",
-            "1/4-1 tsp red pepper flakes (optional)",
-            "2 cups vegetable stock",
-            "juice from 1 lime (3-4 tbsp)",
             "1 bag soy curls",
             "2 tablespoons oil (canola or vegetable)",
-            "1/2 red bell pepper, sliced",
-            "1/2 green bell pepper, sliced",
-            "1/2 yellow bell pepper, sliced",
-            "1/2 yellow onion, sliced",
+            "2 bell peppers, sliced",
+            "2 onions, sliced",
+            "3 tbsp taco seasoning",
             "cilantro and lime or lemon juice for garnish",
             "1 can refried beans, if desired"
         ],
@@ -390,9 +389,8 @@
         "tags": ["vegan", "mexican", "sweet-potato"],
         "source": "https://minimalistbaker.com/sweet-potato-black-bean-enchiladas/#wprm-recipe-container-34134",
         "ingredients": [
-            "10 small yellow or white corn tortillas",
             "10 tortillas",
-            "3 cups cubed sweet potatoes (skin on)",
+            "3 cups cubed sweet potatoes",
             "1 Tbsp coconut or avocado oil (or sub water)",
             "1 tsp ground cumin",
             "1/2 tsp smoked paprika",
