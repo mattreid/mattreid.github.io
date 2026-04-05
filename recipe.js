@@ -427,6 +427,7 @@ class RecipeDetail {
         const checkboxes = document.querySelectorAll('.ingredient-checkbox');
         const clickableItems = document.querySelectorAll('.ingredient-item.clickable');
         
+        // Handle checkbox clicks directly
         checkboxes.forEach((checkbox, index) => {
             checkbox.addEventListener('change', (e) => {
                 const text = e.target.nextElementSibling;
@@ -436,16 +437,25 @@ class RecipeDetail {
                     text.classList.remove('checked');
                 }
             });
+            
+            // Handle checkbox click to prevent bubbling to parent
+            checkbox.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering parent click
+                checkbox.checked = !checkbox.checked;
+                checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+            });
         });
         
+        // Handle clicks on the entire ingredient item (except checkbox)
         clickableItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                const checkbox = item.querySelector('.ingredient-checkbox');
-                if (checkbox) {
-                    checkbox.checked = !checkbox.checked;
-                    // Create and dispatch a proper change event
-                    const event = new Event('change', { bubbles: true });
-                    checkbox.dispatchEvent(event);
+            item.addEventListener('click', (e) => {
+                // Only handle clicks that aren't on the checkbox itself
+                if (!e.target.classList.contains('ingredient-checkbox')) {
+                    const checkbox = item.querySelector('.ingredient-checkbox');
+                    if (checkbox) {
+                        checkbox.checked = !checkbox.checked;
+                        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
                 }
             });
         });
