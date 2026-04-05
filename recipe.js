@@ -408,7 +408,7 @@ class RecipeDetail {
 
     renderIngredients(ingredients) {
         return ingredients.map((ingredient, index) => 
-            `<li class="ingredient-item clickable" data-index="${index}">
+            `<li class="ingredient-item" data-index="${index}">
                 <input type="checkbox" class="ingredient-checkbox">
                 <span class="ingredient-text">${ingredient}</span>
             </li>`
@@ -424,37 +424,20 @@ class RecipeDetail {
     }
 
     setupIngredientCheckboxes() {
-        const checkboxes = document.querySelectorAll('.ingredient-checkbox');
-        const clickableItems = document.querySelectorAll('.ingredient-item.clickable');
+        const ingredientItems = document.querySelectorAll('.ingredient-item');
         
-        // Handle checkbox clicks directly
-        checkboxes.forEach((checkbox, index) => {
-            checkbox.addEventListener('change', (e) => {
-                const text = e.target.nextElementSibling;
-                if (e.target.checked) {
-                    text.classList.add('checked');
-                } else {
-                    text.classList.remove('checked');
-                }
-            });
-            
-            // Handle checkbox click to prevent bubbling to parent
-            checkbox.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent triggering parent click
-                checkbox.checked = !checkbox.checked;
-                checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-            });
-        });
-        
-        // Handle clicks on the entire ingredient item (except checkbox)
-        clickableItems.forEach((item, index) => {
+        ingredientItems.forEach(item => {
             item.addEventListener('click', (e) => {
-                // Only handle clicks that aren't on the checkbox itself
-                if (!e.target.classList.contains('ingredient-checkbox')) {
-                    const checkbox = item.querySelector('.ingredient-checkbox');
-                    if (checkbox) {
-                        checkbox.checked = !checkbox.checked;
-                        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                const checkbox = item.querySelector('.ingredient-checkbox');
+                if (checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    
+                    // Update text styling
+                    const text = item.querySelector('.ingredient-text');
+                    if (checkbox.checked) {
+                        text.classList.add('checked');
+                    } else {
+                        text.classList.remove('checked');
                     }
                 }
             });
