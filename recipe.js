@@ -407,8 +407,8 @@ class RecipeDetail {
     }
 
     renderIngredients(ingredients) {
-        return ingredients.map(ingredient => 
-            `<li class="ingredient-item clickable" onclick="this.querySelector('.ingredient-checkbox').click()">
+        return ingredients.map((ingredient, index) => 
+            `<li class="ingredient-item clickable" data-index="${index}">
                 <input type="checkbox" class="ingredient-checkbox">
                 <span class="ingredient-text">${ingredient}</span>
             </li>`
@@ -425,13 +425,25 @@ class RecipeDetail {
 
     setupIngredientCheckboxes() {
         const checkboxes = document.querySelectorAll('.ingredient-checkbox');
-        checkboxes.forEach(checkbox => {
+        const clickableItems = document.querySelectorAll('.ingredient-item.clickable');
+        
+        checkboxes.forEach((checkbox, index) => {
             checkbox.addEventListener('change', (e) => {
                 const text = e.target.nextElementSibling;
                 if (e.target.checked) {
                     text.classList.add('checked');
                 } else {
                     text.classList.remove('checked');
+                }
+            });
+        });
+        
+        clickableItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const checkbox = item.querySelector('.ingredient-checkbox');
+                if (checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    checkbox.dispatchEvent(new Event('change'));
                 }
             });
         });
