@@ -408,7 +408,7 @@ class RecipeDetail {
 
     renderIngredients(ingredients) {
         return ingredients.map(ingredient => 
-            `<li class="ingredient-item">
+            `<li class="ingredient-item clickable" onclick="this.querySelector('.ingredient-checkbox').click()">
                 <input type="checkbox" class="ingredient-checkbox">
                 <span class="ingredient-text">${ingredient}</span>
             </li>`
