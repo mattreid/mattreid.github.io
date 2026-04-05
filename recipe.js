@@ -443,7 +443,9 @@ class RecipeDetail {
                 const checkbox = item.querySelector('.ingredient-checkbox');
                 if (checkbox) {
                     checkbox.checked = !checkbox.checked;
-                    checkbox.dispatchEvent(new Event('change'));
+                    // Create and dispatch a proper change event
+                    const event = new Event('change', { bubbles: true });
+                    checkbox.dispatchEvent(event);
                 }
             });
         });
