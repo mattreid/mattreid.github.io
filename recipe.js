@@ -407,12 +407,37 @@ class RecipeDetail {
     }
 
     renderIngredients(ingredients) {
-        return ingredients.map((ingredient, index) => 
-            `<li class="ingredient-item" data-index="${index}">
-                <input type="checkbox" class="ingredient-checkbox">
-                <span class="ingredient-text">${ingredient}</span>
-            </li>`
-        ).join('');
+        let html = '';
+        let ingredientIndex = 0;
+        
+        ingredients.forEach((ingredient, index) => {
+            if (typeof ingredient === 'string') {
+                // Regular ingredient (backward compatible)
+                html += `<li class="ingredient-item" data-index="${ingredientIndex}">
+                    <input type="checkbox" class="ingredient-checkbox">
+                    <span class="ingredient-text">${ingredient}</span>
+                </li>`;
+                ingredientIndex++;
+            } else if (typeof ingredient === 'object' && ingredient.group && ingredient.items) {
+                // Grouped ingredients
+                html += `
+                    <div class="ingredient-group">
+                        <h3 class="group-header">${ingredient.group}</h3>
+                        <ul class="group-ingredients-list">
+                            ${ingredient.items.map(item => `
+                                <li class="ingredient-item" data-index="${ingredientIndex}">
+                                    <input type="checkbox" class="ingredient-checkbox">
+                                    <span class="ingredient-text">${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+                ingredientIndex += ingredient.items.length;
+            }
+        });
+        
+        return html;
     }
 
     renderInstructions(instructions) {
@@ -487,10 +512,7 @@ class RecipeDetail {
             setTimeout(() => {
                 const retryList = document.getElementById('ingredientsList');
                 if (retryList) {
-                    this.updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
-                        return this.scaleIngredient(ingredient, scaleFactor);
-                    });
-                    
+                    this.updatedIngredients = this.scaleIngredients(this.currentRecipe.ingredients, scaleFactor);
                     retryList.innerHTML = this.renderIngredients(this.updatedIngredients);
                     this.setupIngredientCheckboxes();
                     console.log('✅ Ingredients list found on retry');
@@ -501,12 +523,25 @@ class RecipeDetail {
             return;
         }
         
-        this.updatedIngredients = this.currentRecipe.ingredients.map(ingredient => {
-            return this.scaleIngredient(ingredient, scaleFactor);
-        });
-        
+        this.updatedIngredients = this.scaleIngredients(this.currentRecipe.ingredients, scaleFactor);
         ingredientsList.innerHTML = this.renderIngredients(this.updatedIngredients);
         this.setupIngredientCheckboxes();
+    }
+
+    scaleIngredients(ingredients, scaleFactor) {
+        return ingredients.map(ingredient => {
+            if (typeof ingredient === 'string') {
+                // Scale regular ingredient
+                return this.scaleIngredient(ingredient, scaleFactor);
+            } else if (typeof ingredient === 'object' && ingredient.group && ingredient.items) {
+                // Scale grouped ingredients
+                return {
+                    group: ingredient.group,
+                    items: ingredient.items.map(item => this.scaleIngredient(item, scaleFactor))
+                };
+            }
+            return ingredient;
+        });
     }
 
     scaleIngredient(ingredient, scaleFactor) {
