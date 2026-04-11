@@ -638,6 +638,32 @@ body {
     opacity: 0.6;
 }
 
+/* Ingredient Group Styling */
+.ingredient-group {
+    margin-bottom: 1.5rem;
+}
+
+.group-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+}
+
+.group-ingredients-list {
+    list-style: none;
+    margin-left: 0;
+}
+
+.group-ingredients-list .ingredient-item {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.group-ingredients-list .ingredient-item:last-child {
+    border-bottom: none;
+}
+
 .instructions-list {
     counter-reset: step-counter;
     list-style: none;
