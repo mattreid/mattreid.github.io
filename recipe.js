@@ -547,22 +547,35 @@ class RecipeDetail {
     scaleIngredient(ingredient, scaleFactor) {
         // Improved scaling that handles fractions, mixed numbers, and decimals properly
         // Only match measurements at the start of the ingredient string
-        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+)\s*([a-zA-Z]+(?:\s+[a-zA-Z]+)*?)(?=\s|$)/g, (match, amount, unit) => {
+        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾])\s*([a-zA-Z]+(?:\s+[a-zA-Z]+)*?)(?=\s|$)/g, (match, amount, unit) => {
             let originalAmount;
             
-            // Handle mixed numbers (e.g., "2 1/4")
-            if (amount.includes(' ') && amount.includes('/')) {
+            // Handle mixed numbers (e.g., "2 1/4" or "2 ¼")
+            if (amount.includes(' ') && (amount.includes('/') || /[¼½¾]/.test(amount))) {
                 const parts = amount.split(' ');
                 const wholeNumber = parseInt(parts[0]);
                 const fraction = parts[1];
-                const fractionParts = fraction.split('/');
-                const fractionValue = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
+                
+                let fractionValue;
+                if (fraction.includes('/')) {
+                    // Regular fraction like "1/4"
+                    const fractionParts = fraction.split('/');
+                    fractionValue = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
+                } else {
+                    // Unicode fraction like "¼"
+                    fractionValue = this.parseUnicodeFraction(fraction);
+                }
+                
                 originalAmount = wholeNumber + fractionValue;
             }
             // Handle simple fractions (e.g., "1/2")
             else if (amount.includes('/')) {
                 const fractionParts = amount.split('/');
                 originalAmount = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
+            }
+            // Handle Unicode fractions (e.g., "¼", "½", "¾")
+            else if (/[¼½¾]/.test(amount)) {
+                originalAmount = this.parseUnicodeFraction(amount);
             }
             // Handle decimals and whole numbers
             else {
@@ -571,20 +584,13 @@ class RecipeDetail {
             
             const scaledAmount = originalAmount * scaleFactor;
             
-            // Format the result properly
-            let formattedAmount;
-            if (scaledAmount < 1) {
-                formattedAmount = scaledAmount.toFixed(2);
-            } else if (scaledAmount < 10) {
-                formattedAmount = scaledAmount.toFixed(1);
-            } else {
-                formattedAmount = Math.round(scaledAmount).toString();
+            // If no scaling needed and original was a fraction, preserve it
+            if (scaleFactor === 1 && (amount.includes('/') || /[¼½¾]/.test(amount))) {
+                return `${amount} ${unit}`;
             }
             
-            // Remove trailing .0 for whole numbers
-            if (formattedAmount.endsWith('.0')) {
-                formattedAmount = Math.round(parseFloat(formattedAmount)).toString();
-            }
+            // Format the result using fraction conversion for better readability
+            const formattedAmount = this.formatAmount(scaledAmount);
             
             return `${formattedAmount} ${unit}`;
         });
@@ -654,6 +660,86 @@ class RecipeDetail {
     filterByCategory(category) {
         // Navigate to main page with category filter
         window.location.href = `index.html?category=${encodeURIComponent(category)}`;
+    }
+
+    decimalToFraction(decimal) {
+        // Common cooking fractions with their decimal equivalents
+        const commonFractions = [
+            { fraction: '1/8', decimal: 0.125 },
+            { fraction: '1/4', decimal: 0.25 },
+            { fraction: '1/3', decimal: 0.333 },
+            { fraction: '3/8', decimal: 0.375 },
+            { fraction: '1/2', decimal: 0.5 },
+            { fraction: '2/3', decimal: 0.666 },
+            { fraction: '3/4', decimal: 0.75 },
+            { fraction: '7/8', decimal: 0.875 }
+        ];
+
+        // Round to nearest common fraction
+        let closestFraction = null;
+        let smallestDifference = Infinity;
+
+        for (const { fraction, decimal: fracDecimal } of commonFractions) {
+            const difference = Math.abs(decimal - fracDecimal);
+            if (difference < smallestDifference) {
+                smallestDifference = difference;
+                closestFraction = fraction;
+            }
+        }
+
+        // If very close to a common fraction (within 0.02), use it
+        if (smallestDifference < 0.02) {
+            return closestFraction;
+        }
+
+        // For very small numbers, use the fraction if close enough
+        if (decimal < 0.1 && smallestDifference < 0.05) {
+            return closestFraction;
+        }
+
+        // Otherwise, return as decimal with appropriate precision
+        if (decimal < 1) {
+            return decimal.toFixed(2).replace(/\.?0+$/, '');
+        } else {
+            return Math.round(decimal).toString();
+        }
+    }
+
+    parseUnicodeFraction(unicodeFraction) {
+        const unicodeToDecimal = {
+            '¼': 0.25,
+            '½': 0.5,
+            '¾': 0.75
+        };
+        
+        // Handle cases like "2¼" (whole number + unicode fraction)
+        const match = unicodeFraction.match(/^(\d*)([¼½¾])$/);
+        if (match) {
+            const wholeNumber = match[1] ? parseInt(match[1]) : 0;
+            const fractionChar = match[2];
+            return wholeNumber + unicodeToDecimal[fractionChar];
+        }
+        
+        // Handle standalone unicode fractions
+        return unicodeToDecimal[unicodeFraction] || 0;
+    }
+
+    formatAmount(amount) {
+        if (amount >= 1) {
+            const wholeNumber = Math.floor(amount);
+            const decimalPart = amount - wholeNumber;
+            
+            if (decimalPart > 0.05) {
+                // Convert decimal part to fraction
+                const fraction = this.decimalToFraction(decimalPart);
+                return `${wholeNumber} ${fraction}`;
+            } else {
+                return wholeNumber.toString();
+            }
+        } else {
+            // Less than 1, just use fraction or decimal
+            return this.decimalToFraction(amount);
+        }
     }
 }
 
