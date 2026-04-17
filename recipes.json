@@ -763,5 +763,66 @@
             "For extra protein, you can add additional lentils or some white beans to the sauce.",
             "The breadcrumbs add great texture - don't skip them! They can be made gluten-free with GF breadcrumbs."
         ]
+    },
+    {
+        "id": "sheet-pan-zaatar-chickpeas",
+        "title": "Sheet Pan Za'atar Chickpeas with Sweet Potatoes",
+        "description": "Crispy chickpeas and tender vegetables with Middle Eastern spices on one sheet pan. A simple, flavorful vegan and gluten-free meal.",
+        "image": "https://frommybowl.com/wp-content/uploads/2022/05/Sheet_Pan_Zaatar_Chickpeas_Sweet_Potatoes_Vegan_FromMyBowl-10-768x1152.jpg",
+        "prepTime": "15 min",
+        "cookTime": "35 min",
+        "servings": 4,
+        "complexity": 2,
+        "category": "Main Dishes",
+        "tags": ["vegan", "gluten-free", "sheet-pan", "middle-eastern"],
+        "source": "https://frommybowl.com/sheet-pan-zaatar-chickpeas-sweet-potatoes/",
+        "ingredients": [
+            {
+                "group": "For the Chickpeas",
+                "items": [
+                    "2 cups cooked chickpeas, rinsed well",
+                    "1 tablespoon za'atar spice blend",
+                    "Salt, to taste",
+                    "Olive oil, for drizzling"
+                ]
+            },
+            {
+                "group": "For the Vegetables",
+                "items": [
+                    "1 large sweet potato, peeled and diced",
+                    "1 red bell pepper, sliced",
+                    "1 yellow onion, thinly sliced",
+                    "1 teaspoon ground cumin",
+                    "1 teaspoon smoked paprika",
+                    "1 teaspoon garlic powder",
+                    "Salt, to taste",
+                    "Olive oil, for drizzling"
+                ]
+            },
+            {
+                "group": "For Serving (Optional)",
+                "items": [
+                    "Easy Tahini Sauce or Hummus",
+                    "Chopped lettuce and/or parsley",
+                    "Fresh pita or cooked rice"
+                ]
+            }
+        ],
+        "instructions": [
+            "Preheat the oven to 405°F and line or grease a large baking sheet.",
+            "Place the chickpeas on a clean kitchen towel or paper towel and gently rub to dry well. Discard any loose skins, then transfer the chickpeas to a medium bowl.",
+            "Add the za'atar, salt, and a generous drizzle of olive oil to the chickpeas and mix well. Set aside.",
+            "Add the sweet potato, bell pepper, and onion directly to the baking sheet. Sprinkle the cumin, smoked paprika, garlic powder, and salt over the veggies, then drizzle with olive oil.",
+            "Toss the vegetables until evenly combined, then push them to one side of the baking sheet. Add the chickpeas to the open space and spread out evenly.",
+            "Bake on the top rack of the oven for 20 minutes, then flip the veggies and chickpeas.",
+            "Return to the oven and bake for an additional 15 minutes, until the chickpeas are crispy.",
+            "Transfer the chickpeas and vegetables to serving bowls and serve with rice or pita and tahini sauce, or as desired."
+        ],
+        "notes": [
+            "Za'atar is a Middle Eastern spice blend; you can usually purchase it at grocery stores or make your own.",
+            "Store leftovers in the fridge for up to 5 days.",
+            "For extra crispy chickpeas, make sure they're very dry before seasoning and baking.",
+            "This recipe is naturally vegan and gluten-free."
+        ]
     }
 ]

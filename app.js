@@ -356,9 +356,22 @@ class RecipeSite {
         const filtered = this.recipes.filter(recipe => 
             recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             recipe.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            recipe.ingredients.some(ing => ing.toLowerCase().includes(searchTerm.toLowerCase()))
+            this.searchIngredients(recipe.ingredients, searchTerm.toLowerCase())
         );
         this.renderRecipeGrid(filtered);
+    }
+
+    searchIngredients(ingredients, searchTerm) {
+        return ingredients.some(ing => {
+            if (typeof ing === 'string') {
+                // Regular ingredient (backward compatible)
+                return ing.toLowerCase().includes(searchTerm);
+            } else if (typeof ing === 'object' && ing.items) {
+                // Grouped ingredients - search within the items
+                return ing.items.some(item => item.toLowerCase().includes(searchTerm));
+            }
+            return false;
+        });
     }
 
     openRecipe(recipeId) {
