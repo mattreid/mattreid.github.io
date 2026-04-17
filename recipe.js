@@ -547,11 +547,11 @@ class RecipeDetail {
     scaleIngredient(ingredient, scaleFactor) {
         // Improved scaling that handles fractions, mixed numbers, and decimals properly
         // Only match measurements at the start of the ingredient string
-        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾])\s*([a-zA-Z]+(?:\s+[a-zA-Z]+)*?)(?=\s|$)/g, (match, amount, unit) => {
+        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾ thirds2/3])\s*([a-zA-Z]+(?:\s+[a-zA-Z]+)*?)(?=\s|$)/g, (match, amount, unit) => {
             let originalAmount;
             
             // Handle mixed numbers (e.g., "2 1/4" or "2 ¼")
-            if (amount.includes(' ') && (amount.includes('/') || /[¼½¾]/.test(amount))) {
+            if (amount.includes(' ') && (amount.includes('/') || /[¼½¾ thirds2/3]/.test(amount))) {
                 const parts = amount.split(' ');
                 const wholeNumber = parseInt(parts[0]);
                 const fraction = parts[1];
@@ -574,7 +574,7 @@ class RecipeDetail {
                 originalAmount = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
             }
             // Handle Unicode fractions (e.g., "¼", "½", "¾")
-            else if (/[¼½¾]/.test(amount)) {
+            else if (/[¼½¾ thirds2/3]/.test(amount)) {
                 originalAmount = this.parseUnicodeFraction(amount);
             }
             // Handle decimals and whole numbers
@@ -585,7 +585,7 @@ class RecipeDetail {
             const scaledAmount = originalAmount * scaleFactor;
             
             // If no scaling needed and original was a fraction, preserve it
-            if (scaleFactor === 1 && (amount.includes('/') || /[¼½¾]/.test(amount))) {
+            if (scaleFactor === 1 && (amount.includes('/') || /[¼½¾ thirds2/3]/.test(amount))) {
                 return `${amount} ${unit}`;
             }
             
@@ -709,11 +709,13 @@ class RecipeDetail {
         const unicodeToDecimal = {
             '¼': 0.25,
             '½': 0.5,
-            '¾': 0.75
+            '¾': 0.75,
+            ' thirds': 0.333,
+            '2/3': 0.666
         };
         
         // Handle cases like "2¼" (whole number + unicode fraction)
-        const match = unicodeFraction.match(/^(\d*)([¼½¾])$/);
+        const match = unicodeFraction.match(/^(\d*)([¼½¾ thirds2/3])$/);
         if (match) {
             const wholeNumber = match[1] ? parseInt(match[1]) : 0;
             const fractionChar = match[2];
