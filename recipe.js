@@ -547,54 +547,41 @@ class RecipeDetail {
     scaleIngredient(ingredient, scaleFactor) {
         if (scaleFactor === 1) return ingredient;
         
-        // Multi-pattern approach for better ingredient scaling
-        const patterns = [
-            // Pattern 1: Standard measurements (amount + unit + description)
-            /^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(tsp|teaspoon|tbsp|tablespoon|cup|cups|oz|ounce|ounces|lb|pound|pounds|g|gram|grams|kg|kilogram|kilograms|ml|milliliter|milliliters|l|liter|liters|fl\s*oz|fluid\s*ounce|pinch|dash|clove|cloves|can|cans)(?:\s+of)?\b\s*(.*)$/i,
-            // Pattern 2: Whole ingredients with count (4 cloves garlic, 2 carrots)
-            /^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(clove|cloves|carrot|carrots|onion|onions|garlic|clove|cloves|stalk|stalks|rib|ribs|pepper|peppers|potato|potatoes|tomato|tomatoes|leaf|leaves|piece|pieces)\b\s*(.*)$/i,
-            // Pattern 3: Canned goods with size (1 (15-ounce) can tomatoes)
-            /^(\d+)\s*\(([^)]+)\)\s*(can|cans|jar|jars|bottle|bottles)(?:\s+of)?\s*(.*)$/i,
-            // Pattern 4: Simple count items (1 medium onion, 2 large eggs)
-            /^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(small|medium|large|extra\s+large)?\s*([a-z]+(?:\s+[a-z]+)?)\s*(.*)$/i
-        ];
+        // Pattern 1: Standard measurements (amount + unit + description)
+        const standardMatch = ingredient.match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(tsp|teaspoon|tbsp|tablespoon|cup|cups|oz|ounce|ounces|lb|pound|pounds|g|gram|grams|kg|kilogram|kilograms|ml|milliliter|milliliters|l|liter|liters|fl\s*oz|fluid\s*ounce|pinch|dash|clove|cloves|can|cans)(?:\s+of)?\b\s*(.*)$/i);
+        if (standardMatch) {
+            const [fullMatch, amount, unit, rest] = standardMatch;
+            const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
+            return `${scaledAmount} ${unit}${rest ? ' ' + rest : ''}`;
+        }
         
-        for (const pattern of patterns) {
-            const match = ingredient.match(pattern);
-            if (match) {
-                return this.processIngredientMatch(match, scaleFactor);
-            }
+        // Pattern 2: Whole ingredients with count (4 cloves garlic, 2 carrots)
+        const wholeMatch = ingredient.match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(clove|cloves|carrot|carrots|onion|onions|garlic|stalk|stalks|rib|ribs|pepper|peppers|potato|potatoes|tomato|tomatoes|leaf|leaves|piece|pieces)\b\s*(.*)$/i);
+        if (wholeMatch) {
+            const [fullMatch, amount, item, rest] = wholeMatch;
+            const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
+            return `${scaledAmount} ${item}${rest ? ' ' + rest : ''}`;
+        }
+        
+        // Pattern 3: Canned goods with size (1 (15 oz) can tomatoes)
+        const cannedMatch = ingredient.match(/^(\d+)\s*\(([^)]+)\)\s*(can|cans|jar|jars|bottle|bottles)(?:\s+of)?\s*(.*)$/i);
+        if (cannedMatch) {
+            const [fullMatch, amount, size, container, rest] = cannedMatch;
+            const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
+            return `${scaledAmount} (${size}) ${container}${rest ? ' ' + rest : ''}`;
+        }
+        
+        // Pattern 4: Size descriptors (1 medium onion, 2 large eggs)
+        const sizeMatch = ingredient.match(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(small|medium|large|extra\s+large)?\s*([a-z]+(?:\s+[a-z]+)?)\s*(.*)$/i);
+        if (sizeMatch) {
+            const [fullMatch, amount, size, item, rest] = sizeMatch;
+            const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
+            const sizeText = size ? size + ' ' : '';
+            return `${scaledAmount} ${sizeText}${item}${rest ? ' ' + rest : ''}`;
         }
         
         // If no pattern matches, return original ingredient
         return ingredient;
-    }
-    
-    processIngredientMatch(match, scaleFactor) {
-        const [fullMatch, amount, ...captures] = match;
-        const rest = captures[captures.length - 1] || '';
-        
-        let originalAmount = this.parseAmount(amount);
-        const scaledAmount = originalAmount * scaleFactor;
-        const formattedAmount = this.formatAmount(scaledAmount);
-        
-        // Reconstruct the ingredient based on the pattern that matched
-        if (captures.length === 3) {
-            // Standard format: amount + unit + rest
-            return `${formattedAmount} ${captures[0]}${rest ? ' ' + rest : ''}`;
-        } else if (captures.length === 2) {
-            // Simple format: amount + item + rest
-            return `${formattedAmount} ${captures[0]}${rest ? ' ' + rest : ''}`;
-        } else if (captures.length === 4) {
-            // Canned goods: amount + size + container + rest
-            return `${formattedAmount} (${captures[1]}) ${captures[2]}${rest ? ' ' + rest : ''}`;
-        } else if (captures.length === 5) {
-            // Size + item: amount + size + item + rest
-            const size = captures[1] ? captures[1] + ' ' : '';
-            return `${formattedAmount} ${size}${captures[2]}${rest ? ' ' + rest : ''}`;
-        }
-        
-        return fullMatch;
     }
     
     parseAmount(amount) {
