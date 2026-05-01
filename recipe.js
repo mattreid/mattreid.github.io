@@ -547,7 +547,7 @@ class RecipeDetail {
     scaleIngredient(ingredient, scaleFactor) {
         // Improved scaling that handles fractions, mixed numbers, and decimals properly
         // Only match measurements at the start of the ingredient string
-        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(tsp|teaspoon|tbsp|tablespoon|cup|cups|oz|ounce|ounces|lb|pound|pounds|g|gram|grams|kg|kilogram|kilograms|ml|milliliter|milliliters|l|liter|liters|fl\s*oz|fluid\s*ounce|pinch|dash|clove|cloves)(?:\s+of)?\b\s*(.*)$/g, (match, amount, unit, rest) => {
+        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(tsp|teaspoon|tbsp|tablespoon|cup|cups|oz|ounce|ounces|lb|pound|pounds|g|gram|grams|kg|kilogram|kilograms|ml|milliliter|milliliters|l|liter|liters|fl\s*oz|fluid\s*ounce|pinch|dash|clove|cloves|can|cans)(?:\s+of)?\b\s*(.*)$/g, (match, amount, unit, rest) => {
             let originalAmount;
             
             // Handle mixed numbers (e.g., "2 1/4" or "2 ¼")

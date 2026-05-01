@@ -547,7 +547,7 @@
             "1/2 of a medium ripe avocado",
             "1 ½ tbsp soy sauce or tamari",
             "4 garlic cloves roughly chopped",
-            "1/2 to 1 serrano pepper roughly chopped",
+            "1/2 to 1 serrano or chipotle pepper roughly chopped",
             "1 big handful of cilantro leaves and tender stems remove thick stems",
             "1 tsp toasted sesame oil more to taste",
             "1 large lime zested and juiced",
@@ -820,9 +820,7 @@
         ],
         "notes": [
             "Za'atar is a Middle Eastern spice blend; you can usually purchase it at grocery stores or make your own.",
-            "Store leftovers in the fridge for up to 5 days.",
             "For extra crispy chickpeas, make sure they're very dry before seasoning and baking.",
-            "This recipe is naturally vegan and gluten-free."
         ]
     },
     {
@@ -844,12 +842,16 @@
             "1 medium yellow onion, finely diced",
             "4 cloves garlic, minced",
             "1 tbsp double-concentrate tomato paste",
-            "1.5 tsp dried thyme",
-            "2.5 tsp smoked paprika",
-            "2 cups dry red lentils, rinsed well",
+            "2 tsp dried thyme",
+            "3 tsp smoked paprika",
+            "1 tsp harissa powder",
+            "1 tsp Italian seasoning",
+            ".5 tsp red pepper flakes",
+            "2 cups red lentils, rinsed well",
             "5 cups vegetable broth",
-            "1 (15-ounce) can fire-roasted tomatoes",
-            "1 (15-ounce) can chickpeas, drained and rinsed",
+            "1 15oz can fire-roasted crushed tomatoes",
+            "1 15oz can chickpeas, drained and rinsed",
+            "1 tbsp adobo sauce",
             "3/4 tsp fine sea salt",
             "Fresh-cracked pepper, to taste",
             "2 cups baby spinach",
@@ -863,6 +865,106 @@
             "Stir in spinach and cook uncovered for about 1 minute, until wilted. Stir in remaining tbsp of olive oil. Taste and adjust seasoning if needed.",
             "Serve hot with lemon wedges, fresh-cracked pepper, and a sprinkle of parsley."
         ],
-        "notes": "For an extra layer of flavor, deglaze the pan with 1/2 cup of white wine right after garlic and spices have cooked. Stir and scrape any brown bits on the bottom of the pan, and let it fully reduce before adding the lentils. For a subtle kick, add 1/4-1/2 tsp of crushed red pepper with the other spices. Cayenne pepper is nice, too. For a subtle herby depth, add a bay leaf or two when you add the broth (just remove before serving). For extra smokiness, add more smoked paprika or add a few dashes of liquid smoke near the end of cooking. Add extra brightness by stirring in 1-2 tbsp of lemon juice at the end of cooking. For a creamier texture, cook a little longer until the lentils break down more or blend a portion of the finished dish. You can also stir in 1/3 cup of non-dairy sour cream or cashew cream."
+        "notes": "For extra smokiness, add more smoked paprika or add a few dashes of liquid smoke near the end of cooking. Add extra brightness by stirring in 1-2 tbsp of lemon juice at the end of cooking. For a creamier texture, cook a little longer until the lentils break down more or blend a portion of the finished dish. You can also stir in 1/3 cup of cashew cream."
+    },
+    {
+        "id": "crispy-orange-tofu",
+        "title": "Crispy Orange Tofu",
+        "description": "This Crispy Orange Tofu is drenched in a sweet & tangy citrus sauce for a cozy meal that's better than takeout! Vegan & Gluten-Free.",
+        "image": "https://frommybowl.com/wp-content/uploads/2022/03/Vegan_Orange_Tofu_GlutenFree_FromMyBowl-16-768x1152.jpg",
+        "prepTime": "15 min",
+        "cookTime": "40 min",
+        "servings": 4,
+        "complexity": 2,
+        "category": "Main Dishes",
+        "tags": ["vegan", "gluten-free", "tofu", "asian"],
+        "source": "https://frommybowl.com/crispy-orange-tofu-vegan/",
+        "ingredients": [
+            {
+                "group": "For the Tofu",
+                "items": [
+                    "1 (14 ounce) block extra firm tofu, pressed",
+                    "1 tbsp avocado oil",
+                    "1 tbsp low sodium tamari or soy sauce",
+                    "3 tbsp cornstarch"
+                ]
+            },
+            {
+                "group": "For the Orange Sauce",
+                "items": [
+                    "2 tsp toasted sesame oil",
+                    "1 tsp minced ginger",
+                    "3 cloves garlic, finely minced or grated",
+                    "1/4 tsp red chili flakes",
+                    "1 cup freshly squeezed orange juice, strained",
+                    "1/3 cup loosely packed brown sugar",
+                    "1/4 cup reduced-sodium tamari",
+                    "3 tbsp vinegar",
+                    "1 tsp orange zest (about 1 small orange)",
+                    "1 tbsp cornstarch",
+                    "2 tbsp cold water"
+                ]
+            },
+            {
+                "group": "For Serving (Optional)",
+                "items": [
+                    "Cooked rice or noodles",
+                    "Steamed or stir-fried vegetables",
+                    "Green onions, thinly sliced",
+                    "Sesame seeds, for garnish"
+                ]
+            }
+        ],
+        "instructions": [
+            "Preheat the oven to 405°F and line a baking sheet with a silicone mat or parchment paper. Tear the tofu into bite-sized chunks for a more chicken-like texture, or cut into small cubes.",
+            "Add the tofu to a medium bowl and add in the oil and tamari. Toss with a spatula until evenly coated, then sprinkle the cornstarch on top and toss again. Transfer to a baking sheet and spread out the tofu pieces so they aren't touching. Bake on the top rack of the oven for 30 minutes, flipping the tofu halfway through.",
+            "Once the tofu has gone into the oven, begin prepping the sauce. Warm the sesame oil in a medium pan over medium heat. Once warm, add the garlic, ginger, and optional red chili flakes. Sauté for 60 seconds, then add in the orange juice, brown sugar, tamari, vinegar, and orange zest.",
+            "Bring to a simmer over medium heat and cook for 3 to 5 minutes. Mix the cornstarch with the water until dissolved, then add the slurry to the sauce and simmer for another 3 to 5 minutes, or until the sauce has thickened and can coat the back of a spoon.",
+            "Remove the tofu from the oven and add it to the pan, coating all sides of the tofu in the glossy orange sauce. Serve warm, over rice or as desired."
+        ],
+        "notes": "This recipe works great with the crispy tofu, but you can also make the orange sauce and coat it in store-bought vegan chicken or veg chicken nuggets! I recommend using fresh squeezed orange juice for this – pasteurized will work in a pinch, but it will be less sweet and more bitter! You'll need 3-4 large oranges to get ~1 cup of juice. Brown sugar can be replaced with maple syrup or coconut sugar. Cornstarch can be swapped with arrowroot powder to help thicken the sauce. If you plan on making this recipe for meal prep, I would keep the tofu and sauce separate; warm them separately, then toss right before serving. This will keep your tofu crispy!"
+    },
+    {
+        "id": "tahini-dressing",
+        "title": "Tahini Dressing",
+        "description": "You only need 3 simple ingredients to make this amazing Tahini Dressing! It's customizable, perfect for Meal Prep, and delicious on just about everything.",
+        "image": "https://frommybowl.com/wp-content/uploads/2018/10/Vegan_Tahini_Dressing_Pinterest_Color_FromMyBowl.png",
+        "prepTime": "5 min",
+        "cookTime": "0 min",
+        "servings": 8,
+        "complexity": 1,
+        "category": "Sauces",
+        "tags": ["vegan", "gluten-free", "dressing", "sauce"],
+        "source": "https://frommybowl.com/tahini-dressing/#wprm-recipe-container-4228",
+        "ingredients": [
+            {
+                "group": "For the Tahini Sauce",
+                "items": [
+                    "1/2 cup tahini",
+                    "3 tbsp lemon juice (about 1-2 lemons)",
+                    "1/2 tsp kosher salt",
+                    "1/2 cup water, divided; plus more to taste"
+                ]
+            },
+            {
+                "group": "Optional Add-Ins",
+                "items": [
+                    "1 clove fresh garlic, minced",
+                    "1-2 tsp maple syrup",
+                    "1/2 tsp smoked paprika or regular",
+                    "1/2 tsp ground cumin",
+                    "1/4 tsp cayenne pepper",
+                    "1-2 tbsp chopped fresh herbs like dill or parsley"
+                ]
+            }
+        ],
+        "instructions": [
+            "If you are using fresh garlic, combine it with the lemon juice and let sit for 5 minutes for a more mellow flavor.",
+            "Add the tahini, lemon juice, salt, and any additional add-ins to a medium bowl. Whisk together; the tahini will become very thick and lighter in color.",
+            "Slowly pour 1/4 cup of the water into the bowl as you whisk it into the mixture. Slowly add the remaining water to the bowl while you mix the dressing vigorously.",
+            "If you would like your dressing to be thinner, continue to add water slowly and whisk until the dressing reaches your desired consistency.",
+            "Enjoy immediately or store in the fridge for up to one week. The dressing will thicken in the fridge, but you can thin it out with a bit of water if necessary."
+        ],
+        "notes": "If your tahini is on the thicker side, you may need to add more water to thin the dressing out more."
     }
 ]
