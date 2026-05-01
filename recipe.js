@@ -552,7 +552,7 @@ class RecipeDetail {
         if (standardMatch) {
             const [fullMatch, amount, unit, rest] = standardMatch;
             const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
-            return `${scaledAmount} ${unit}${rest ? ' ' + rest : ''}`;
+            return rest ? `${scaledAmount} ${unit} ${rest}` : `${scaledAmount} ${unit}`;
         }
         
         // Pattern 2: Whole ingredients with count (4 cloves garlic, 2 carrots)
@@ -560,7 +560,7 @@ class RecipeDetail {
         if (wholeMatch) {
             const [fullMatch, amount, item, rest] = wholeMatch;
             const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
-            return `${scaledAmount} ${item}${rest ? ' ' + rest : ''}`;
+            return rest ? `${scaledAmount} ${item} ${rest}` : `${scaledAmount} ${item}`;
         }
         
         // Pattern 3: Canned goods with size (1 (15 oz) can tomatoes)
@@ -568,7 +568,7 @@ class RecipeDetail {
         if (cannedMatch) {
             const [fullMatch, amount, size, container, rest] = cannedMatch;
             const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
-            return `${scaledAmount} (${size}) ${container}${rest ? ' ' + rest : ''}`;
+            return rest ? `${scaledAmount} (${size}) ${container} ${rest}` : `${scaledAmount} (${size}) ${container}`;
         }
         
         // Pattern 4: Size descriptors (1 medium onion, 2 large eggs)
@@ -577,7 +577,8 @@ class RecipeDetail {
             const [fullMatch, amount, size, item, rest] = sizeMatch;
             const scaledAmount = this.formatAmount(this.parseAmount(amount) * scaleFactor);
             const sizeText = size ? size + ' ' : '';
-            return `${scaledAmount} ${sizeText}${item}${rest ? ' ' + rest : ''}`;
+            const baseItem = `${sizeText}${item}`;
+            return rest ? `${scaledAmount} ${baseItem} ${rest}` : `${scaledAmount} ${baseItem}`;
         }
         
         // If no pattern matches, return original ingredient
