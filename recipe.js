@@ -545,55 +545,88 @@ class RecipeDetail {
     }
 
     scaleIngredient(ingredient, scaleFactor) {
-        // Improved scaling that handles fractions, mixed numbers, and decimals properly
-        // Only match measurements at the start of the ingredient string
-        return ingredient.replace(/^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(tsp|teaspoon|tbsp|tablespoon|cup|cups|oz|ounce|ounces|lb|pound|pounds|g|gram|grams|kg|kilogram|kilograms|ml|milliliter|milliliters|l|liter|liters|fl\s*oz|fluid\s*ounce|pinch|dash|clove|cloves|can|cans)(?:\s+of)?\b\s*(.*)$/g, (match, amount, unit, rest) => {
-            let originalAmount;
-            
-            // Handle mixed numbers (e.g., "2 1/4" or "2 ¼")
-            if (amount.includes(' ') && (amount.includes('/') || /[¼½¾\u2153\u2154]/.test(amount))) {
-                const parts = amount.split(' ');
-                const wholeNumber = parseInt(parts[0]);
-                const fraction = parts[1];
-                
-                let fractionValue;
-                if (fraction.includes('/')) {
-                    // Regular fraction like "1/4"
-                    const fractionParts = fraction.split('/');
-                    fractionValue = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
-                } else {
-                    // Unicode fraction like "¼"
-                    fractionValue = this.parseUnicodeFraction(fraction);
-                }
-                
-                originalAmount = wholeNumber + fractionValue;
+        if (scaleFactor === 1) return ingredient;
+        
+        // Multi-pattern approach for better ingredient scaling
+        const patterns = [
+            // Pattern 1: Standard measurements (amount + unit + description)
+            /^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(tsp|teaspoon|tbsp|tablespoon|cup|cups|oz|ounce|ounces|lb|pound|pounds|g|gram|grams|kg|kilogram|kilograms|ml|milliliter|milliliters|l|liter|liters|fl\s*oz|fluid\s*ounce|pinch|dash|clove|cloves|can|cans)(?:\s+of)?\b\s*(.*)$/i,
+            // Pattern 2: Whole ingredients with count (4 cloves garlic, 2 carrots)
+            /^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(clove|cloves|carrot|carrots|onion|onions|garlic|clove|cloves|stalk|stalks|rib|ribs|pepper|peppers|potato|potatoes|tomato|tomatoes|leaf|leaves|piece|pieces)\b\s*(.*)$/i,
+            // Pattern 3: Canned goods with size (1 (15-ounce) can tomatoes)
+            /^(\d+)\s*\(([^)]+)\)\s*(can|cans|jar|jars|bottle|bottles)(?:\s+of)?\s*(.*)$/i,
+            // Pattern 4: Simple count items (1 medium onion, 2 large eggs)
+            /^(\d+\s+\d+\/\d+|\d+\/\d+|\d*\.?\d+|\d*[¼½¾\u2153\u2154])\s*(small|medium|large|extra\s+large)?\s*([a-z]+(?:\s+[a-z]+)?)\s*(.*)$/i
+        ];
+        
+        for (const pattern of patterns) {
+            const match = ingredient.match(pattern);
+            if (match) {
+                return this.processIngredientMatch(match, scaleFactor);
             }
-            // Handle simple fractions (e.g., "1/2")
-            else if (amount.includes('/')) {
-                const fractionParts = amount.split('/');
-                originalAmount = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
-            }
-            // Handle Unicode fractions (e.g., "¼", "½", "¾")
-            else if (/[¼½¾\u2153\u2154]/.test(amount)) {
-                originalAmount = this.parseUnicodeFraction(amount);
-            }
-            // Handle decimals and whole numbers
-            else {
-                originalAmount = parseFloat(amount);
+        }
+        
+        // If no pattern matches, return original ingredient
+        return ingredient;
+    }
+    
+    processIngredientMatch(match, scaleFactor) {
+        const [fullMatch, amount, ...captures] = match;
+        const rest = captures[captures.length - 1] || '';
+        
+        let originalAmount = this.parseAmount(amount);
+        const scaledAmount = originalAmount * scaleFactor;
+        const formattedAmount = this.formatAmount(scaledAmount);
+        
+        // Reconstruct the ingredient based on the pattern that matched
+        if (captures.length === 3) {
+            // Standard format: amount + unit + rest
+            return `${formattedAmount} ${captures[0]}${rest ? ' ' + rest : ''}`;
+        } else if (captures.length === 2) {
+            // Simple format: amount + item + rest
+            return `${formattedAmount} ${captures[0]}${rest ? ' ' + rest : ''}`;
+        } else if (captures.length === 4) {
+            // Canned goods: amount + size + container + rest
+            return `${formattedAmount} (${captures[1]}) ${captures[2]}${rest ? ' ' + rest : ''}`;
+        } else if (captures.length === 5) {
+            // Size + item: amount + size + item + rest
+            const size = captures[1] ? captures[1] + ' ' : '';
+            return `${formattedAmount} ${size}${captures[2]}${rest ? ' ' + rest : ''}`;
+        }
+        
+        return fullMatch;
+    }
+    
+    parseAmount(amount) {
+        // Handle mixed numbers (e.g., "2 1/4" or "2 ¼")
+        if (amount.includes(' ') && (amount.includes('/') || /[¼½¾\u2153\u2154]/.test(amount))) {
+            const parts = amount.split(' ');
+            const wholeNumber = parseInt(parts[0]);
+            const fraction = parts[1];
+            
+            let fractionValue;
+            if (fraction.includes('/')) {
+                const fractionParts = fraction.split('/');
+                fractionValue = parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
+            } else {
+                fractionValue = this.parseUnicodeFraction(fraction);
             }
             
-            const scaledAmount = originalAmount * scaleFactor;
-            
-            // If no scaling needed and original was a fraction, preserve it
-            if (scaleFactor === 1 && (amount.includes('/') || /[¼½¾\u2153\u2154]/.test(amount))) {
-                return `${amount} ${unit}${rest ? ' ' + rest : ''}`;
-            }
-            
-            // Format the result using fraction conversion for better readability
-            const formattedAmount = this.formatAmount(scaledAmount);
-            
-            return `${formattedAmount} ${unit}${rest ? ' ' + rest : ''}`;
-        });
+            return wholeNumber + fractionValue;
+        }
+        // Handle simple fractions (e.g., "1/2")
+        else if (amount.includes('/')) {
+            const fractionParts = amount.split('/');
+            return parseInt(fractionParts[0]) / parseInt(fractionParts[1]);
+        }
+        // Handle Unicode fractions (e.g., "¼", "½", "¾")
+        else if (/[¼½¾\u2153\u2154]/.test(amount)) {
+            return this.parseUnicodeFraction(amount);
+        }
+        // Handle decimals and whole numbers
+        else {
+            return parseFloat(amount);
+        }
     }
 
     calculateTotalTime(prepTime, cookTime) {
