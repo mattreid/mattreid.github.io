@@ -427,19 +427,46 @@
         "tags": ["vegan", "asian", "korean", "noodles"],
         "source": "https://rainbowplantlife.com/gochujang-noodles/#wprm-recipe-container-30961",
         "ingredients": [
-            "16 ounces (450g) fresh udon noodles",
-            "3 tbsp gochujang (see note 1)",
-            "1 tbsp toasted sesame oil",
-            "2 tbsp soy sauce (use tamari for GF)",
-            "2 tbsp mirin (or rice vinegar)",
-            "1 ½ tbsp organic brown sugar (see note 2)",
-            "1 tbsp gochugaru (optional)",
-            "1 tbsp neutral-flavored oil",
-            "1 bunch scallions, whites and light greens chopped",
-            "4 garlic cloves, finely chopped",
-            "1 inch piece ginger, grated or minced",
-            "6 to 8 cups Napa cabbage, thinly sliced",
-            "1/4 cup roasted white sesame seeds"
+            {
+                "group": "Noodles",
+                "items": [
+                    "16 ounces (450g) fresh udon noodles"
+                ]
+            },
+            {
+                "group": "Gochujang Sauce",
+                "items": [
+                    "3 tbsp gochujang (see note 1)",
+                    "1 tbsp toasted sesame oil",
+                    "2 tbsp soy sauce (use tamari for GF)",
+                    "2 tbsp mirin (or rice vinegar)",
+                    "1 ½ tbsp organic brown sugar (see note 2)",
+                    "1 tbsp gochugaru (optional)"
+                ]
+            },
+            {
+                "group": "Aromatics",
+                "items": [
+                    "1 tbsp neutral-flavored oil",
+                    "1 bunch scallions, whites and light greens chopped",
+                    "4 garlic cloves, finely chopped",
+                    "1 inch piece ginger, grated or minced"
+                ]
+            },
+            {
+                "group": "Vegetables",
+                "items": [
+                    "6 to 8 cups Napa cabbage, thinly sliced",
+                    "1 onion, sliced",
+                    "1 red bell pepper, sliced"
+                ]
+            },
+            {
+                "group": "Garnish",
+                "items": [
+                    "1/4 cup roasted white sesame seeds"
+                ]
+            }
         ],
         "instructions": [
             "Cook noodles according to package instructions, but cook for 1 minute less to prevent soggy dish. Drain, reserving some noodle water, and set aside.",
@@ -501,23 +528,53 @@
         "tags": ["vegan", "pasta", "chili", "one-pot"],
         "source": "https://rainbowplantlife.com/one-pot-vegan-chili-mac/#wprm-recipe-container-5616",
         "ingredients": [
-            "1 tbsp olive oil",
-            "1 medium yellow onion, diced",
-            "6 cloves garlic, finely chopped",
-            "8 ounces mushrooms, chopped (cremini preferred)",
-            "8 ounces tempeh, grated or crumbled",
-            "1 tbsp chili powder",
-            "1 tsp smoked paprika",
-            "1 tsp oregano",
-            "2 tsp cumin",
-            "½ tsp cayenne pepper (optional)",
-            "1 ½ tsp kosher salt, plus more to taste",
-            "4 cups vegetable broth",
-            "1 can pinto, kidney, or black beans, drained and rinsed",
-            "1 can crushed tomatoes, fire roasted",
-            "1 can sweet corn, drained and rinsed",
-            "12 ounces elbow pasta or cavatappi pasta (gluten-free if needed)",
-            "2-3 tsp agave nectar, maple syrup, coconut sugar, or brown sugar"
+            {
+                "group": "Aromatics & Base",
+                "items": [
+                    "1 tbsp olive oil",
+                    "1 medium yellow onion, diced",
+                    "6 cloves garlic, finely chopped",
+                    "8 ounces mushrooms, chopped (cremini preferred)",
+                    "8 ounces tempeh, grated or crumbled"
+                ]
+            },
+            {
+                "group": "Spices",
+                "items": [
+                    "1 tbsp chili powder",
+                    "1 tsp smoked paprika",
+                    "1 tsp oregano",
+                    "2 tsp cumin",
+                    "½ tsp cayenne pepper (optional)",
+                    "1 ½ tsp kosher salt, plus more to taste"
+                ]
+            },
+            {
+                "group": "Liquid Base",
+                "items": [
+                    "4 cups vegetable broth"
+                ]
+            },
+            {
+                "group": "Canned Goods",
+                "items": [
+                    "1 can pinto, kidney, or black beans, drained and rinsed",
+                    "1 can crushed tomatoes, fire roasted",
+                    "1 can sweet corn, drained and rinsed"
+                ]
+            },
+            {
+                "group": "Pasta",
+                "items": [
+                    "12 ounces elbow pasta or cavatappi pasta (gluten-free if needed)"
+                ]
+            },
+            {
+                "group": "Sweetener",
+                "items": [
+                    "2-3 tsp agave nectar, maple syrup, coconut sugar, or brown sugar"
+                ]
+            }
         ],
         "instructions": [
             "In a Dutch oven or large nonstick pot, heat 1 tbsp oil over medium heat. Once hot, add onions and cook for 2 minutes, seasoning with a pinch of salt.",
@@ -542,16 +599,26 @@
         "tags": ["vegan", "high-protein", "breakfast", "edamame"],
         "source": "https://rainbowplantlife.com/20-minute-high-protein-vegan-meals/#wprm-recipe-container-5616",
         "ingredients": [
-            "1/4 cup (56g) tahini",
-            "12 ounces (340g) shelled frozen edamame, defrosted",
-            "1/2 of a medium ripe avocado",
-            "1 ½ tbsp soy sauce or tamari",
-            "4 garlic cloves roughly chopped",
-            "1/2 to 1 serrano or chipotle pepper roughly chopped",
-            "1 big handful of cilantro leaves and tender stems remove thick stems",
-            "1 tsp toasted sesame oil more to taste",
-            "1 large lime zested and juiced",
-            "Kosher salt to taste"
+            {
+                "group": "Spread Base",
+                "items": [
+                    "1/4 cup (56g) tahini",
+                    "12 ounces (340g) shelled frozen edamame, defrosted",
+                    "1/2 of a medium ripe avocado"
+                ]
+            },
+            {
+                "group": "Flavorings & Seasonings",
+                "items": [
+                    "1 ½ tbsp soy sauce or tamari",
+                    "4 garlic cloves roughly chopped",
+                    "1/2 to 1 serrano or chipotle pepper roughly chopped",
+                    "1 big handful of cilantro leaves and tender stems remove thick stems",
+                    "1 tsp toasted sesame oil more to taste",
+                    "1 large lime zested and juiced",
+                    "Kosher salt to taste"
+                ]
+            }
         ],
         "instructions": [
             "Add the tahini, edamame, avocado, soy sauce, garlic, chile pepper, cilantro, sesame oil, and lime zest and juice to a food processor. Start blending until it turns into a chunky dip. Season with salt to taste as needed.",
