@@ -4,7 +4,6 @@ class RecipeSite {
         this.currentRecipe = null;
         this.originalServings = 1;
         this.currentCategory = 'all';
-        this.currentTag = 'all';
         this.currentSearchTerm = '';
         this.init();
     }
@@ -252,35 +251,19 @@ class RecipeSite {
     }
 
     setupCategoryFilter() {
-        // Get all unique categories
-        const categories = [...new Set(this.recipes.map(recipe => recipe.category || 'Uncategorized'))];
-        
-        // Get all unique tags (flatten and deduplicate)
-        const allTags = this.recipes.flatMap(recipe => recipe.tags || []);
-        const uniqueTags = [...new Set(allTags)].sort();
+        // Get all unique categories, excluding Uncategorized
+        const categories = [...new Set(this.recipes.map(recipe => recipe.category).filter(cat => cat && cat !== 'Uncategorized'))];
         
         // Create category filter UI
         const searchSection = document.querySelector('.search-section');
         const categoryFilter = document.createElement('div');
         categoryFilter.className = 'category-filter';
         categoryFilter.innerHTML = `
-            <div class="filter-section">
-                <h4>Category</h4>
-                <div class="category-buttons">
-                    <button class="category-btn active" data-category="all">All</button>
-                    ${categories.map(category => 
-                        `<button class="category-btn" data-category="${category}">${category}</button>`
-                    ).join('')}
-                </div>
-            </div>
-            <div class="filter-section">
-                <h4>Tags</h4>
-                <div class="tag-buttons">
-                    <button class="tag-btn active" data-tag="all">All</button>
-                    ${uniqueTags.map(tag => 
-                        `<button class="tag-btn" data-tag="${tag}">${tag}</button>`
-                    ).join('')}
-                </div>
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">All</button>
+                ${categories.map(category => 
+                    `<button class="category-btn" data-category="${category}">${category}</button>`
+                ).join('')}
             </div>
         `;
         
@@ -299,20 +282,6 @@ class RecipeSite {
                 this.applyCombinedFilter();
             });
         });
-
-        // Add event listeners to tag buttons
-        const tagButtons = categoryFilter.querySelectorAll('.tag-btn');
-        tagButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                // Update active state
-                tagButtons.forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                
-                // Update current tag and apply combined filter
-                this.currentTag = e.target.dataset.tag;
-                this.applyCombinedFilter();
-            });
-        });
     }
 
     applyCombinedFilter() {
@@ -322,13 +291,6 @@ class RecipeSite {
         if (this.currentCategory !== 'all') {
             filtered = filtered.filter(recipe => 
                 (recipe.category || 'Uncategorized') === this.currentCategory
-            );
-        }
-
-        // Apply tag filter
-        if (this.currentTag !== 'all') {
-            filtered = filtered.filter(recipe => 
-                (recipe.tags || []).includes(this.currentTag)
             );
         }
 
