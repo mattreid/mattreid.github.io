@@ -3,6 +3,9 @@ class RecipeSite {
         this.recipes = [];
         this.currentRecipe = null;
         this.originalServings = 1;
+        this.currentCategory = 'all';
+        this.currentTag = 'all';
+        this.currentSearchTerm = '';
         this.init();
     }
 
@@ -240,7 +243,8 @@ class RecipeSite {
         // Search functionality
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', (e) => {
-            this.filterRecipes(e.target.value);
+            this.currentSearchTerm = e.target.value;
+            this.applyCombinedFilter();
         });
 
         // Category filter functionality
@@ -251,16 +255,32 @@ class RecipeSite {
         // Get all unique categories
         const categories = [...new Set(this.recipes.map(recipe => recipe.category || 'Uncategorized'))];
         
+        // Get all unique tags (flatten and deduplicate)
+        const allTags = this.recipes.flatMap(recipe => recipe.tags || []);
+        const uniqueTags = [...new Set(allTags)].sort();
+        
         // Create category filter UI
         const searchSection = document.querySelector('.search-section');
         const categoryFilter = document.createElement('div');
         categoryFilter.className = 'category-filter';
         categoryFilter.innerHTML = `
-            <div class="category-buttons">
-                <button class="category-btn active" data-category="all">All</button>
-                ${categories.map(category => 
-                    `<button class="category-btn" data-category="${category}">${category}</button>`
-                ).join('')}
+            <div class="filter-section">
+                <h4>Category</h4>
+                <div class="category-buttons">
+                    <button class="category-btn active" data-category="all">All</button>
+                    ${categories.map(category => 
+                        `<button class="category-btn" data-category="${category}">${category}</button>`
+                    ).join('')}
+                </div>
+            </div>
+            <div class="filter-section">
+                <h4>Tags</h4>
+                <div class="tag-buttons">
+                    <button class="tag-btn active" data-tag="all">All</button>
+                    ${uniqueTags.map(tag => 
+                        `<button class="tag-btn" data-tag="${tag}">${tag}</button>`
+                    ).join('')}
+                </div>
             </div>
         `;
         
@@ -274,21 +294,61 @@ class RecipeSite {
                 categoryButtons.forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
                 
-                // Filter recipes
-                this.filterByCategory(e.target.dataset.category);
+                // Update current category and apply combined filter
+                this.currentCategory = e.target.dataset.category;
+                this.applyCombinedFilter();
+            });
+        });
+
+        // Add event listeners to tag buttons
+        const tagButtons = categoryFilter.querySelectorAll('.tag-btn');
+        tagButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Update active state
+                tagButtons.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                // Update current tag and apply combined filter
+                this.currentTag = e.target.dataset.tag;
+                this.applyCombinedFilter();
             });
         });
     }
 
-    filterByCategory(category) {
-        if (category === 'all') {
-            this.renderRecipeGrid(this.recipes);
-        } else {
-            const filtered = this.recipes.filter(recipe => 
-                (recipe.category || 'Uncategorized') === category
+    applyCombinedFilter() {
+        let filtered = this.recipes;
+
+        // Apply category filter
+        if (this.currentCategory !== 'all') {
+            filtered = filtered.filter(recipe => 
+                (recipe.category || 'Uncategorized') === this.currentCategory
             );
-            this.renderRecipeGrid(filtered);
         }
+
+        // Apply tag filter
+        if (this.currentTag !== 'all') {
+            filtered = filtered.filter(recipe => 
+                (recipe.tags || []).includes(this.currentTag)
+            );
+        }
+
+        // Apply search filter
+        if (this.currentSearchTerm) {
+            const searchTerm = this.currentSearchTerm.toLowerCase();
+            filtered = filtered.filter(recipe => 
+                recipe.title.toLowerCase().includes(searchTerm) ||
+                recipe.description.toLowerCase().includes(searchTerm) ||
+                this.searchIngredients(recipe.ingredients, searchTerm) ||
+                this.searchTags(recipe.tags, searchTerm)
+            );
+        }
+
+        this.renderRecipeGrid(filtered);
+    }
+
+    searchTags(tags, searchTerm) {
+        if (!tags || !Array.isArray(tags)) return false;
+        return tags.some(tag => tag.toLowerCase().includes(searchTerm));
     }
 
     applyCategoryFilter(category) {
@@ -301,8 +361,9 @@ class RecipeSite {
             }
         });
         
-        // Apply the filter
-        this.filterByCategory(category);
+        // Update current category and apply combined filter
+        this.currentCategory = category;
+        this.applyCombinedFilter();
     }
 
     renderRecipeGrid(recipesToRender = this.recipes) {
@@ -350,15 +411,6 @@ class RecipeSite {
             color = 'red';
         }
         return `<span style="color: ${color}">${level}</span>`;
-    }
-
-    filterRecipes(searchTerm) {
-        const filtered = this.recipes.filter(recipe => 
-            recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            recipe.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            this.searchIngredients(recipe.ingredients, searchTerm.toLowerCase())
-        );
-        this.renderRecipeGrid(filtered);
     }
 
     searchIngredients(ingredients, searchTerm) {
