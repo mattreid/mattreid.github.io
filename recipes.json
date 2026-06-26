@@ -100,6 +100,7 @@
         "cookTime": "3 hrs",
         "servings": 6,
         "complexity": 2,
+        "category": "Main Dishes",
         "source": "https://detoxinista.com/kung-pao-chickpeas-slow-cooker/",
         "ingredients": [
             ".5 onion, chopped",
@@ -138,6 +139,7 @@
         "cookTime": "30 min",
         "servings": 4,
         "complexity": 2,
+        "category": "Main Dishes",
         "source": "https://www.budgetbytes.com/creamy-coconut-curry-lentils-with-spinach/",
         "ingredients": [
             "2 tablespoons olive oil",
@@ -172,6 +174,7 @@
         "cookTime": "16 min",
         "servings": 3,
         "complexity": 2,
+        "category": "Main Dishes",
         "source": "https://www.pickuplimes.com/recipe/spicy-gochujang-tomato-tofu-1955",
         "ingredients": [
             "1 cup long-grain white rice",
@@ -248,6 +251,7 @@
         "cookTime": "5 min",
         "servings": 1,
         "complexity": 2,
+        "category": "Lunch",
         "source": "https://www.plantwhys.com/blog/crispy-5-minute-seitan",
         "ingredients": [
             "1/3 cup vital wheat gluten",
@@ -311,6 +315,7 @@
         "cookTime": "25 min",
         "servings": 4,
         "complexity": 2,
+        "category": "Main Dishes",
         "source": "https://www.youtube.com/watch?v=A5ZvijZcvow",
         "ingredients": [
             "1 bag soy curls",
@@ -338,6 +343,7 @@
         "cookTime": "20 min",
         "servings": 4,
         "complexity": 2,
+        "category": "Main Dishes",
         "source": "https://makeitdairyfree.com/sheet-pan-teriyaki-tofu-and-broccoli/",
         "ingredients": [
             "1 block extra firm tofu, pressed and cubed",
@@ -700,7 +706,7 @@
         "id": "buffalo-chickpea-salad",
         "title": "Buffalo Chickpea Salad",
         "description": "Made with just 6 ingredients and flavorful hot sauce, this Buffalo Chickpea Salad is a quick and delicious base for a hearty snack or meal!",
-        "image": "https://theconscientiouseater.com/wp-content/uploads/Buffalo-Chickpea-Salad-Sandwiches-1200-300x300.jpeg",
+        "image": "https://theconscientiouseater.com/wp-content/uploads/Buffalo-Chickpea-Salad-Sandwiches-1200.jpg",
         "prepTime": "15 min",
         "cookTime": "0 min",
         "servings": 4,
