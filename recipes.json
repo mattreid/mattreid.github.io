@@ -1319,5 +1319,60 @@
             "Slice in half and serve with hot sauce or as-is!"
         ],
         "notes": "This wrap is best enjoyed fresh, though you could prep the lentils (step 2) in advance and store in an airtight container in the fridge for up to 3 days."
+    },
+    {
+        "id": "teriyaki-tofu-veggie-wraps",
+        "title": "Teriyaki Tofu & Veggie Wraps",
+        "description": "Crunchy vegetables, teriyaki glazed tofu and a delicious peanut sauce make up this Asian flavours-inspired wrap. It comes together in only 20 minutes, so it's perfect for a busy weeknight, or when you don't really feel like cooking!",
+        "image": "https://cdn.pickuplimes.com/cache/9c/ba/9cba000a867b4c6a14c4bfebf1d370f8.jpg",
+        "prepTime": "10 min",
+        "cookTime": "10 min",
+        "servings": 4,
+        "complexity": 2,
+        "category": "Lunch",
+        "tags": ["vegan", "asian", "wraps", "tofu", "peanut-sauce"],
+        "source": "https://www.pickuplimes.com/recipe/teriyaki-tofu-veggie-wraps-1254",
+        "ingredients": [
+            {
+                "group": "Teriyaki Tofu",
+                "items": [
+                    "14 oz (400g) firm tofu",
+                    "1 Tbsp cornstarch",
+                    "½ tsp salt",
+                    "2 Tbsp vegetable oil",
+                    "6 Tbsp teriyaki sauce, plus more to taste",
+                    "1 Tbsp sriracha, or less for less spicy"
+                ]
+            },
+            {
+                "group": "Peanut Sauce",
+                "items": [
+                    "5 Tbsp natural peanut butter",
+                    "4 Tbsp hot water",
+                    "1 Tbsp teriyaki sauce",
+                    "½ lime, juiced",
+                    "2 tsp sriracha, or omit for less heat"
+                ]
+            },
+            {
+                "group": "Wrap It Up",
+                "items": [
+                    "4 large soft flour tortillas (or gluten-free tortillas)",
+                    "1 cup shredded red cabbage",
+                    "1 cup grated carrot",
+                    "1 cup spinach",
+                    "½ cucumber, cut into sticks"
+                ]
+            }
+        ],
+        "instructions": [
+            "In a large bowl, mix together the tofu, cornstarch, and salt.",
+            "Heat the oil in a large pan over medium-high heat. Cook the tofu for about 10 minutes, or until golden on all sides.",
+            "When the tofu is golden, add the teriyaki sauce and sriracha. Stir to coat, then remove from the heat.",
+            "In a small bowl, mix together the peanut sauce ingredients.",
+            "Spoon the peanut sauce over each wrap. Divide the veggies and prepared tofu between the wraps, then roll up.",
+            "Grill in a grill pan over medium heat for 1 to 2 minutes per side, until warmed through and lightly toasted, if desired. Enjoy!"
+        ],
+        "notes": "Traditionally, teriyaki sauce is made with just soy sauce, sake (or mirin), and sugar. Make sure to check the ingredients of your bottle so it doesn't have too many other ingredients that may affect the flavour. Our large tortillas measure about 10 inches (25 cm) in diameter. The assembled wrap is best when enjoyed immediately."
     }
 ]
