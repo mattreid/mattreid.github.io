@@ -1283,5 +1283,35 @@
             "Serve the muffins warm or at room temperature smeared with honey-butter."
         ],
         "notes": "For a gluten-free version, use Cup4Cup gluten free flour. The muffins can be stored in an airtight container for up to 3 days."
+    },
+    {
+        "id": "crispy-lentil-wraps",
+        "title": "Crispy Lentil Wraps",
+        "description": "These high-protein Vegan Lentil Wraps are quick and easy to make with fresh veggies, brown lentils, hummus, and green sauce for a filling, flavor-packed lunch!",
+        "image": "https://frommybowl.com/wp-content/uploads/2026/01/Crispy_Lentil_Wraps_Vegan_FromMyBowl-11.jpg",
+        "prepTime": "10 min",
+        "cookTime": "5 min",
+        "servings": 1,
+        "complexity": 1,
+        "category": "Main Dishes",
+        "tags": ["vegan", "high-protein", "wraps", "lunch"],
+        "source": "https://frommybowl.com/crispy-lentil-wraps/",
+        "ingredients": [
+            "1 cup cooked brown lentils",
+            "1-2 tablespoons garlic hummus",
+            "1-2 tablespoons green sauce (pesto, chimichurri, zhoug, etc)",
+            "1 cup of baby spinach, arugula, or mixed greens",
+            "1 small Persian cucumber, ends trimmed and thinly sliced",
+            "1 10\" tortilla or lavash wrap",
+            "1-2 teaspoons olive oil, optional, for pan frying"
+        ],
+        "instructions": [
+            "Drain and rinse your lentils if using canned. Place them on a clean paper towel or kitchen towel and gently pat dry to remove excess water.",
+            "Add the lentils to a small bowl along with the hummus and green sauce. Gently mix well, until the lentils are evenly coated and will stick together.",
+            "Place the mixed greens in the center of your wrap, then spread the cucumber slices evenly over the top and press them down slightly. Use a spoon to place the lentils on top of the cucumber, forming a long log shape. Fold the shorter ends of your wrap in, then roll it up.",
+            "Warm the olive oil in a medium nonstick skillet over medium heat. Add the wrap, with the open folded side down, and place a heavy flat object on top of it (such as a smaller pot lid). Sear the wrap for 5 minutes, then use a spatula to flip and sear for an additional 2 to 3 minutes, until golden.",
+            "Slice in half and serve with hot sauce or as-is!"
+        ],
+        "notes": "This wrap is best enjoyed fresh, though you could prep the lentils (step 2) in advance and store in an airtight container in the fridge for up to 3 days."
     }
 ]
