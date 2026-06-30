@@ -177,17 +177,27 @@
         "category": "Main Dishes",
         "source": "https://www.pickuplimes.com/recipe/spicy-gochujang-tomato-tofu-1955",
         "ingredients": [
-            "1 cup long-grain white rice",
-            "1 tablespoon vegetable oil",
-            "11 oz firm tofu, pressed, cut into 1 cm cubes",
-            "1/4 cup gochujang, or less for less heat",
-            "5 garlic cloves, minced",
-            "3 tablespoons reduced-sodium soy sauce",
-            "2 tablespoons light brown sugar",
-            "3.5 cups cherry tomatoes, halved",
-            "greens (optional)",
-            "toasted sesame seeds (optional garnish)",
-            "sliced green onion (optional garnish)"
+            {
+                "group": "Base",
+                "items": [
+                    "1 cup long-grain white rice",
+                    "1 tablespoon vegetable oil",
+                    "11 oz firm tofu, pressed, cut into 1 cm cubes",
+                    "3.5 cups cherry tomatoes, halved",
+                    "greens (optional)",
+                    "toasted sesame seeds (optional garnish)",
+                    "sliced green onion (optional garnish)"
+                ]
+            },
+            {
+                "group": "Sauce",
+                "items": [
+                    "1/4 cup gochujang, or less for less heat",
+                    "5 garlic cloves, minced",
+                    "3 tablespoons reduced-sodium soy sauce",
+                    "2 tablespoons light brown sugar"
+                ]
+            }
         ],
         "instructions": [
             "Cook the rice according to the package instructions.",
@@ -1404,7 +1414,7 @@
             "2 cups (480 mL) low-sodium vegetable broth",
             "1 (14-ounce / 400g) can crushed tomatoes",
             "1 (13.5-ounce/400 mL) can full-fat coconut milk",
-            "3 tablespoons unsweetened creamy almond butter",
+            "3 tablespoons unsweetened creamy almond butter (or tahini)",
             "1/2 a small lemon, juiced",
             "1/2 cup (~8g) fresh cilantro, roughly chopped",
             "For serving: Basmati or Jasmine rice and Indian flatbread such as roti, paratha, or naan"
